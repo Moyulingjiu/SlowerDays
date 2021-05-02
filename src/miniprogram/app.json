@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/index/index"
-
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -11,6 +10,5 @@
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
-  "style": "v2",
-  "van-button": "@vant/weapp/button/index"
+  "style": "v2"
 }
