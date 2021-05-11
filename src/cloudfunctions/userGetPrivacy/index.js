@@ -13,16 +13,9 @@ exports.main = async (event, context) => {
     id: id
   }).get()
   data = data.data[0]
-  let credit = 0
-  if (data.credit < 60)
-    credit = 1
-  else if (data.credit < 80)
-  credit = 2
 
   return {
-    id: data.id,
-    baseInformation: data.baseInformation,
-    credit: credit,
-    wallet: data.wallet
+    id: id,
+    privacy: Data.privacy
   }
 }

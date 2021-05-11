@@ -3,15 +3,18 @@ const cloud = require('wx-server-sdk')
 
 cloud.init()
 
-const db = cloud.database()
-
 // 云函数入口函数
 exports.main = async (event, context) => {
-  let id = event.id
+  const wxContext = cloud.getWXContext()
 
   let data = await db.collection("UserInfor").where({
-    id: id
+    baseInformation: {
+      openid: wxContext.OPENID
+    }
   }).get()
+  if (data.data.length == 0) { // 如果没有注册的话
+    return false
+  }
   data = data.data[0]
   let credit = 0
   if (data.credit < 60)
