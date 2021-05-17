@@ -1,0 +1,24 @@
+<!--pages/stamps/stamps.wxml-->
+<van-grid column-num="2" clickable="true" square="true" use-slot="true" center="true" >
+  <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
+    <image
+      style="width: 100%; height: 100%;"
+      src="../images/cloudstore/stamp2.jpg" 
+    />
+  </van-grid-item>
+
+ <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
+ <image
+      style="width: 100%; height: 100%;"
+      src="../images/cloudstore/stamp3.jpg" 
+    />
+ 
+  </van-grid-item>
+  <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
+  <image
+      style="width: 100%; height: 100%;"
+      src="../images/cloudstore/stamp4.jpg" 
+    />
+  </van-grid-item> 
+</van-grid>
+

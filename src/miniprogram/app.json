@@ -3,6 +3,9 @@
     "pages/index/index",
     "pages/register/register",
     "pages/writePage/writePage"
+    "pages/index/index"
+    
+
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -10,6 +13,7 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "SlowerDays",
     "navigationBarTextStyle": "black"
+    
   },
   "sitemapLocation": "sitemap.json"
 }
