@@ -1,7 +1,61 @@
 <!--index.wxml-->
-<van-button type="primary">主要按钮</van-button>
-<van-button type="default">默认按钮</van-button>
-<van-button type="primary">主要按钮</van-button>
-<van-button type="info">信息按钮</van-button>
-<van-button type="warning">警告按钮</van-button>
-<van-button type="danger">危险按钮</van-button>
+
+<!-- 滚动广告 -->
+<view class='whl-swiper-container' style="width: 710rpx; height: 274rpx; display: flex; box-sizing: border-box; left: 0rpx; top: 0rpx">
+
+<swiper autoplay="true" circular="true" class='whl-swiper' interval="5000" >
+  <swiper-item>
+    <image class="logo" mode="aspectFill" src='https://i0.hdslb.com/bfs/article/068c75267f7c5ea5bb14ff29703f3915d4779795.jpg@1320w_742h.webp'></image>
+  </swiper-item>
+  <swiper-item>
+    <image class="logo" mode="aspectFill" src='https://i0.hdslb.com/bfs/article/fa27121d129076dd858c9baaccb93227193f4ebd.jpg@1320w_662h.webp'></image>
+  </swiper-item>
+  <swiper-item>
+    <image class="logo" mode="aspectFill" src='https://i0.hdslb.com/bfs/article/9cba9da9565151ad8adcc42a2f432b6296c2b10f.jpg@1320w_606h.webp'></image>
+  </swiper-item>
+</swiper>
+</view> 
+
+<view class="messagecard" bindtap="onLettersDetail">
+  <van-image round width="60px"  height="60px" lazy-load src="{{portraitURL}}" class="portrait"/>
+  <text class="friendname">{{username}}</text>
+  <van-tag round type="primary" class="relationship"  style="margin-left: {{frelationshipLength}};">笔友</van-tag>
+  <text class="describe">你与伊蕾娜已传递了X封信</text>
+  <van-tag plain type="success" class="infor">新的信件</van-tag>
+</view>
+
+
+<van-popup show="{{ lettersdetailshow }}" bind:close="onClose" round>
+  <view class="detailletters">
+    <view>
+      <view class="lettertime">2021-5-15 夜煞寄给伊蕾娜的信</view>
+      <view class="lettercover"></view>
+    </view>
+  </view>
+</van-popup>
+
+<view>
+  <van-button round icon="edit" type="default" class="collapseMenu" style="bottom:{{bottom1}};" bindtap="onWrite"></van-button>
+  <van-button round icon="description" type="default" class="collapseMenu" style="bottom:{{bottom2}};"></van-button>
+  <van-button round icon="{{isPlus}}" type="default" class="collapseMenu" bindtap="tapCollapseMenu"></van-button>
+</view>
+
+<van-overlay show="{{ writeShow }}" bind:click="onClickHide">
+  <view class="wrapper">
+    <van-button round plain type="info" class="writebutton" bindtap="onNewFriend">认识一个新朋友</van-button>
+    <van-button round plain type="info" class="writebutton">与老朋友叙叙旧</van-button>
+  </view>
+</van-overlay>
+
+<van-transition show="{{ show }}" custom-class="block">
+  <view class="transferStatusCard">
+    <text class="transferStatusTitle">您目前正有X封信运输中</text>
+    <van-tag plain type="warning" class="infor">遭遇了雨雪天气，受到延误</van-tag>
+  </view>
+</van-transition>
+
+<van-tabbar active="{{ active }}" bind:change="onChange">
+  <van-tabbar-item icon="friends-o">首页</van-tabbar-item>
+  <van-tabbar-item icon="home-o">云深小卖部</van-tabbar-item>
+  <van-tabbar-item icon="wap-home-o">我的</van-tabbar-item>
+</van-tabbar>

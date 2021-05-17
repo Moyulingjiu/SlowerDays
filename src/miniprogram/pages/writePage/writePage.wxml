@@ -1,0 +1,41 @@
+<!--miniprogram/pages/writePage/writePage.wxml-->
+<van-cell-group>
+  <van-cell title="收件人" />
+</van-cell-group>
+<van-tag plain type="primary" class="nametag" bindtap="changeRecipient">一位有缘的陌生人</van-tag>
+
+<van-popup show="{{ recipientPageshow }}" bind:close="onClose" round>
+  <view class="recipientPage">
+    <text>更换收件人</text>
+    <van-divider />
+    <van-tag plain type="success" class="newfriendtag" bindtap="changeRecipient">认识一个新朋友？</van-tag>
+    <van-cell-group class="friendList">
+      <van-cell title="晨曦氤氲"/>
+      <van-cell title="晨曦氤氲" />
+      <van-cell title="晨曦氤氲" />
+      <van-cell title="晨曦氤氲" />
+    </van-cell-group>
+  </view>
+</van-popup>
+
+<van-divider contentPosition="center" customStyle="color: #1989fa; border-color: #1989fa;">
+  这次是什么精彩的想法呢
+</van-divider>
+<textarea class="letterContent" bindblur="bindTextAreaBlur" placeholder="在这里开始书写你想说的内容吧" />
+
+<van-popup show="{{ stampPageshow }}" bind:close="onClose" round>
+  <view class="recipientPage">
+    <text>选择邮票</text>
+    <van-divider />
+    <van-grid column-num="3">
+      <van-grid-item icon="photo-o" text="文字" wx:for="{{ 6 }}" />
+    </van-grid>
+  </view>
+</van-popup>
+
+<van-tabbar bind:change="changeStampPage">
+  <van-tabbar-item icon="coupon-o"></van-tabbar-item>
+  <van-tabbar-item icon="orders-o"></van-tabbar-item>
+  <van-tabbar-item icon="gift-o"></van-tabbar-item>
+  <van-tabbar-item icon="logistics"></van-tabbar-item>
+</van-tabbar>

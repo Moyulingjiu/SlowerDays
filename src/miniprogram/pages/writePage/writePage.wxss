@@ -1,0 +1,32 @@
+/* miniprogram/pages/writePage/writePage.wxss */
+page{
+  height: 100%;
+  background: white;
+}
+.letterContent{
+  height: 100%;
+  width: 750rpx;
+  background: white;
+}
+.nametag{
+  position:absolute;
+  top: 11px;
+  left: 76px;
+}
+
+.recipientPage{
+  height: 900rpx;
+  width: 600rpx;
+  margin:20px;
+}
+
+.friendList{
+  position:absolute;
+  top: 60px;
+}
+
+.newfriendtag{
+  position:absolute;
+  top: 64px;
+  right: 12px;
+}
