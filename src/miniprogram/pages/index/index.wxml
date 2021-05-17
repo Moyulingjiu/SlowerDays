@@ -1,7 +1,7 @@
 <!--index.wxml-->
-<van-button type="primary">主要按钮</van-button>
-<van-button type="default">默认按钮</van-button>
-<van-button type="primary">主要按钮</van-button>
-<van-button type="info">信息按钮</van-button>
-<van-button type="warning">警告按钮</van-button>
-<van-button type="danger">危险按钮</van-button>
+<view>
+<button type="primary"> <navigator url="/pages/cloudstore/cloudstore" hover-class="navigator-hover">云边商城
+
+</navigator>
+</button>
+</view>

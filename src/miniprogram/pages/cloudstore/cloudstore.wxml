@@ -1,0 +1,206 @@
+<!-- 搜索窗口 -->
+<view class="search-container">
+<van-search
+  value="{{ value }}"
+  placeholder="请输入关键词搜索信纸、邮票、礼物"
+  use-action-slot
+  bind:change="onChange"
+  bind:search="onSearch"
+  clearable="true"
+  shape="round"
+>
+<view slot="action" bind:tap="onClick"></view>
+</van-search>
+</view>
+<!-- 搜索栏与内容界面 -->
+<van-tabs animated color="blue">
+
+  <!-- 写信工具 -->
+  <van-tab class="tools"  title="写信工具">
+  <van-grid column-num="2" clickable="true" square="true" use-slot="true" center="true" >
+  <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
+    <!-- <text >信封样图
+   </text> -->
+    <image
+      style="width: 100%; height: 100%;"
+      src="../images/cloudstore/paper.jpg" 
+    />
+  </van-grid-item>
+  <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="../paper/paper">
+    <image
+      style="width: 100%; height: 100%;"
+      src="../images/cloudstore/sale1.jpg" 
+    />
+  </van-grid-item>
+
+ <van-grid-item use-slot wx:for="{{ 1 }}" wx:for-item="index" url="../stamps/stamps">
+ <!-- <text >邮票样图
+ </text> -->
+  <image
+      style="width: 100%; height: 100%;"
+      src="../images/cloudstore/stamp3.jpg" 
+    /> 
+ 
+  </van-grid-item>
+  <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="../paper/paper">
+    <text >其他
+ </text>
+  <!-- <image
+      style="width: 100%; height: 100%;"
+      src="../images/cloudstore/stamp4.jpg" 
+    /> -->
+  </van-grid-item> 
+</van-grid>
+</van-tab>
+
+<!-- 伴手礼 -->
+  <van-tab title="伴手礼">
+    <view class="goods"  >  
+  
+    <van-grid column-num="2" clickable="true" square="true" use-slot="true" center="true" >
+  <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
+    <image
+      style="width: 100%; height: 100%;"
+      src="../images/cloudstore/gift1.jpg" 
+    />
+  </van-grid-item>
+
+  <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
+    <image
+      style="width: 100%; height: 100%;"
+      src="../images/cloudstore/gift2.jpg"
+    />
+  </van-grid-item>
+  <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
+    <text>
+      伴手礼1
+    </text>
+    <!-- <image
+      style="width: 100%; height: 100%;"
+      src="../images/cloudstore/sale3.jpg"
+    /> -->
+  </van-grid-item>
+  <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
+    <text>
+      伴手礼2
+    </text>
+    <!-- <image
+      style="width: 100%; height: 100%;"
+      src="../images/cloudstore/sale4.jpg"
+    /> -->
+  </van-grid-item>
+  </van-grid>
+  </view>  
+  </van-tab>
+
+<!-- 热门推荐 -->
+<van-tab title="热门推荐">
+  <van-grid column-num="2" clickable="true" square="true" use-slot="true" center="true" >
+  <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
+    <text >信封热门第一
+   </text>
+  </van-grid-item>
+  <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
+  <text >信封热门第二
+   </text>
+  </van-grid-item>
+
+  <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
+  <text >信封热门第三
+   </text>
+  </van-grid-item>
+  </van-grid>
+</van-tab>
+
+<!-- 购买服务 -->
+
+<van-tab title="购买服务">
+  <view class="self" >
+    <text style='padding-left: 18px ' >用户名称</text></view>
+  <van-icon name="https://b.yzcdn.cn/vant/icon-demo-1126.png" size="25" custom-style="width: 200rpx; height: 250rpx; " />
+<view class="line">
+  <van-cell
+  is-link
+  title="充值入口"
+  link-type="navigateTo"
+  url="../charge/charge"
+  />
+  </view>
+  <view class="line2">
+  <van-cell
+  is-link
+  title="账户余额"
+  link-type="navigateTo"
+  url=""
+  />
+  </view>
+  
+ </van-tab>
+
+
+</van-tabs>
+
+
+ 
+<!-- 滚动广告 -->
+<!-- <view class='whl-swiper-container' style="width: 710rpx; height: 274rpx; display: flex; box-sizing: border-box; left: 0rpx; top: 0rpx">
+
+  <swiper  indicator-dots="true" autoplay="true"   circular="{{circular}}" indicator-color="whlite" indicator-active-color="black" class='whl-swiper'  bindchange="swiperChange" interval="2000" >
+    <swiper-item>
+      <image class="logo" src='../images/cloudstore/1.jpg' style="width: 710rpx; height: 294rpx; display: inline-block; box-sizing: border-box; left: NaNrpx; top: NaNrpx"></image>
+    </swiper-item>
+    <swiper-item>
+      <image class="logo" src='../images/cloudstore/2.jpg' style="width: 710rpx; height: 294rpx; display: inline-block; box-sizing: border-box; left: NaNrpx; top: NaNrpx"></image>
+    </swiper-item>
+    <swiper-item>
+      <image class="logo" src='../images/cloudstore/3.jpg' style="width: 710rpx; height: 248rpx; display: inline-block; box-sizing: border-box; left: NaNrpx; top: NaNrpx"></image>
+    </swiper-item>
+
+	</swiper>
+	 <view class='whl-dots'>
+      <block wx:for="{{pages/images/cloudstore}}" wx:key="item"> 
+      <view data-i='{{index}}' bindtap='onDot' class="whl-dot {{index == swiperCurrent ? 'whl-dot-active' : ''}}"></view>
+    </block> 
+  </view> 
+</view>  -->
+
+
+ <!--新品推荐  -->
+ <view class="goods" style="width: 750rpx; height: 306rpx; display: block; box-sizing: border-box; left: NaNrpx; ">  
+  <van-divider contentPosition="left" textColor="#1989fa" ></van-divider>
+ <view  class="top">
+ <van-icon name="new" size="32px" color="rgb(245, 94, 94)"/>
+ </view>
+  
+  <van-grid column-num="2" clickable="true" square="true" use-slot="true" center="false" >
+  <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="../paper/paper" >
+    <image
+      style="width: 100%; height: 100%;"
+      src="../images/cloudstore/sale1.jpg" 
+      
+    />
+
+
+    <image
+      style="width: 100%; height: 100%;"
+      src="../images/cloudstore/sale2.jpg"
+    />
+    <image
+      style="width: 100%; height: 100%;"
+      src="../images/cloudstore/sale3.jpg"
+    />
+    <image
+      style="width: 100%; height: 100%;"
+      src="../images/cloudstore/sale4.jpg"
+    />
+  </van-grid-item>
+  <!--邮票等推荐  -->
+  <van-grid-item use-slot wx:for="{{ 1 }}" url="../stamps/stamps" wx:for-item="index" style="width: 280rpx; height: 258rpx; display: inline; box-sizing: content-box; left: NaNrpx; top: NaNrpx" >
+    <image class="stamp1"
+      style="width: 340rpx; height: 340rpx;   box-sizing: border-box"
+      src="../images/cloudstore/stamp1.jpg" 
+    />
+    
+  </van-grid-item>
+</van-grid>
+</view>
