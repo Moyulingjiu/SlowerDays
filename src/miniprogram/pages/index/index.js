@@ -14,17 +14,30 @@ Page({
     frelationshipLength: "20px",
     show: false,
     writeShow: false,
-    lettersdetailshow: false
+    lettersdetailshow: false,
+    collapseMenuShow: false
   },
   onChange(event) {
     // event.detail 的值为当前选中项的索引
     this.setData({ active: event.detail });
+    if(event.detail == 1){
+      wx.redirectTo({
+        url: '../cloudstore/cloudstore',
+      })
+    }
   },
   onLettersDetail(){
     this.setData({ lettersdetailshow: true });
   },
   onClose() {
-    this.setData({ lettersdetailshow: false });
+    this.setData({ 
+      lettersdetailshow: false,
+      bottom1: "12%",
+      bottom2: "12%",
+      isPlus: "plus",
+      show:false,
+      collapseMenuShow: false
+    });
   },
   onClickHide() {
     this.setData({ writeShow: false });
@@ -37,22 +50,7 @@ Page({
     var that = this
     this.setData({
       frelationshipLength: (that.data.username.length-1)*15+20 + "px"
-
-  
- 
-
-  getUserProfile() {
-    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    wx.getUserProfile({
-      desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        this.setData({
-          avatarUrl: res.userInfo.avatarUrl,
-          userInfo: res.userInfo,
-          hasUserInfo: true,
-        })
-      }
-    })
+      })
   },
 
   /**
@@ -110,7 +108,8 @@ Page({
         bottom1: "12%",
         bottom2: "12%",
         isPlus: "plus",
-        show:false
+        show:false,
+        collapseMenuShow: false
        })
     }
     else{
@@ -118,7 +117,8 @@ Page({
         bottom1: "20%",
         bottom2: "28%",
         isPlus: "cross",
-        show:true
+        show:true,
+        collapseMenuShow: true
        })
     }
   },

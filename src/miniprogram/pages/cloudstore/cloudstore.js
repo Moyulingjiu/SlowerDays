@@ -1,48 +1,75 @@
-//滚筒播放照片是否需要上传云端的问题未解决
-Component({
+// miniprogram/pages/index/index.js
+Page({
+
   /**
-   * 组件的属性列表
-   */
-  /**
-   * 组件的初始数据
+   * 页面的初始数据
    */
   data: {
-    swiperCurrent: 0,
-    indicatordots: true,/*加入图标指示点*/
-    autoplay: true,/*自动切换图片开关*/
-    interval: 1000,
-    indexList: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    active: 1,
+  },
+  onChange(event) {
+    // event.detail 的值为当前选中项的索引
+    this.setData({ active: event.detail });
+    if(event.detail == 0){
+      wx.redirectTo({
+        url: '../index/index',
+      })
+    }
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
 
   },
+
   /**
-   * 组件的方法列表
+   * 生命周期函数--监听页面显示
    */
-  methods: {
-    onDot(e) {
-      this.setData({
-        swiperCurrent: e.currentTarget.dataset.i
-      })
-      console.log(e)
+  onShow: function () {
+
   },
-  swiperChange: function(e) {
-    // console.log(e)
-    this.setData({
-      swiperCurrent: e.detail.current
-    })
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
   },
-  
-  onChange(e) {
-    this.setData({
-      value: e.detail,
-    });
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
   },
-  onSearch() {
-    Toast('搜索' + this.data.value);
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
   },
-  onClick() {
-    Toast('搜索' + this.data.value);
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
   },
-  
-  
-}
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  },
+
 })

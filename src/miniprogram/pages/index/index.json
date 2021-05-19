@@ -10,8 +10,4 @@
     "van-popup": "@vant/weapp/popup/index",
     "van-overlay": "@vant/weapp/overlay/index"
   }
-    "van-button": "@vant/weapp/button/index",
-    "van-search": "@vant/weapp/search/index"
-    }
- 
 }

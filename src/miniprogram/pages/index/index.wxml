@@ -1,5 +1,6 @@
 <!--index.wxml-->
 
+<scroll-view class="mainview" scroll-y="true">
 <!-- 滚动广告 -->
 <view class='whl-swiper-container' style="width: 710rpx; height: 274rpx; display: flex; box-sizing: border-box; left: 0rpx; top: 0rpx">
 
@@ -16,7 +17,7 @@
 </swiper>
 </view> 
 
-<view class="messagecard" bindtap="onLettersDetail">
+<view class="messagecard" bindtap="onLettersDetail" wx:for="{{6}}">
   <van-image round width="60px"  height="60px" lazy-load src="{{portraitURL}}" class="portrait"/>
   <text class="friendname">{{username}}</text>
   <van-tag round type="primary" class="relationship"  style="margin-left: {{frelationshipLength}};">笔友</van-tag>
@@ -34,11 +35,23 @@
   </view>
 </van-popup>
 
-<view>
-  <van-button round icon="edit" type="default" class="collapseMenu" style="bottom:{{bottom1}};" bindtap="onWrite"></van-button>
-  <van-button round icon="description" type="default" class="collapseMenu" style="bottom:{{bottom2}};"></van-button>
-  <van-button round icon="{{isPlus}}" type="default" class="collapseMenu" bindtap="tapCollapseMenu"></van-button>
-</view>
+
+
+<van-button round icon="{{isPlus}}" type="default" class="collapseMenu" bindtap="tapCollapseMenu"></van-button>
+
+<van-overlay show="{{ collapseMenuShow }}" bind:click="onClose">
+  <van-transition show="{{ show }}" custom-class="block">
+    <view class="transferStatusCard">
+      <text class="transferStatusTitle">您目前正有X封信运输中</text>
+      <van-tag plain type="warning" class="infor">遭遇了雨雪天气，受到延误</van-tag>
+    </view>
+  </van-transition>
+  <view>
+    <van-button round icon="edit" type="default" class="collapseMenu" style="bottom:{{bottom1}};" bindtap="onWrite"></van-button>
+    <van-button round icon="description" type="default" class="collapseMenu" style="bottom:{{bottom2}};"></van-button>
+    <van-button round icon="{{isPlus}}" type="default" class="collapseMenu" bindtap="tapCollapseMenu"></van-button>
+  </view>
+</van-overlay>
 
 <van-overlay show="{{ writeShow }}" bind:click="onClickHide">
   <view class="wrapper">
@@ -46,13 +59,7 @@
     <van-button round plain type="info" class="writebutton">与老朋友叙叙旧</van-button>
   </view>
 </van-overlay>
-
-<van-transition show="{{ show }}" custom-class="block">
-  <view class="transferStatusCard">
-    <text class="transferStatusTitle">您目前正有X封信运输中</text>
-    <van-tag plain type="warning" class="infor">遭遇了雨雪天气，受到延误</van-tag>
-  </view>
-</van-transition>
+</scroll-view>
 
 <van-tabbar active="{{ active }}" bind:change="onChange">
   <van-tabbar-item icon="friends-o">首页</van-tabbar-item>

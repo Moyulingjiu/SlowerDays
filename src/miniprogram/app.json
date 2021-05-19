@@ -2,10 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/register/register",
-    "pages/writePage/writePage"
-    "pages/index/index"
-    
-
+    "pages/writePage/writePage",
+    "pages/cloudstore/cloudstore"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

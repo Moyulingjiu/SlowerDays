@@ -1,72 +1,14 @@
+page{
+  height: 100%;
+}
+
+.mainview{
+  height: 92%;
+}
+
 .search-container{
   border-radius:10rpx;
 }
-
-
-
-/* 滚筒设计 */
-/* .whl-swiper-container {
-  width:710rpx;
-  height: 400rpx;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius:16rpx;
-  position: relative;
-    
-}
-.whl-swiper-container .whl-swiper {
-  display: block;
-  width:710rpx;
-  height:250rpx;
-  margin: 0 auto;
-  box-shadow:0rpx 0px 20rpx 0rpx rgba(0,0,0,0.20);
-  border-radius:10rpx;
-} */
-/* .whl-swiper-container .slide-image {
-  width:710rpx;
-  height:292rpx;
-  border-radius: 16rpx;
-  display:flex;                    
-  justify-content: center;         
-  align-items:center;  
-
-}
-.whl-swiper-container .whl-dots {
-  width: 100%;
-  height: 35rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: -45rpx;
-}
-.whl-dots .whl-dot{
-  display: block;
-  margin: 0 5rpx;
-  width: 30rpx;
-  height: 6rpx;
-  background: #D8D8D8;
-  border-radius: 12rpx;
-  transition: all .6s;
-  opacity: 0.9;
-  filter: opacity(0.9);
-}
-.whl-dots .whl-dot.whl-dot-active{
-  width: 38rpx;
-  border-radius: 12rpx;
-  background: blueviolet;
-} */
-/* swiper{
-  width: 100%;
-  height: 400rpx;
-}
-swiper image{
-  width: 100%;
-  height: 100%;
-  border-radius:10rpx;
-} */
 
 .goods{
   align-items: center; 

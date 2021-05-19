@@ -1,4 +1,11 @@
 /**index.wxss**/
+page{
+  height: 100%;
+}
+
+.mainview{
+  height: 92%;
+}
 
 swiper image{
   width: 100%;
@@ -41,7 +48,7 @@ swiper image{
   border-radius: 10px;
   background: #ffffff;
   height: 80px;
-  margin:20px;
+  margin:10px 20px;
 }
 
 .portrait{
