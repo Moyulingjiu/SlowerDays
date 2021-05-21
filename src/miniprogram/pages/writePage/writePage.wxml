@@ -28,7 +28,7 @@
 
 <van-popup show="{{ stampPageshow }}" bind:close="onClose" round>
   <view class="recipientPage">
-    <text>选择邮票</text>
+    <text>{{popupName}}</text>
     <van-divider />
     <van-grid column-num="3">
       <van-grid-item icon="photo-o" text="文字" wx:for="{{ 6 }}" />

@@ -1,0 +1,25 @@
+/* miniprogram/pages/letterDetail/letterDetail.wxss */
+.sender{
+  position: relative;
+  left: 20rpx;
+  top: 5px;
+}
+
+.letterdate{
+  position: absolute;
+  right: 20rpx;
+  top: 24px;
+  font-size:10px;
+}
+
+.gifttag{
+  position: absolute;
+  top: 2px;
+  right: 20rpx;
+}
+
+.giftdetailpage{
+  height: 900rpx;
+  width: 600rpx;
+  margin:20px;
+}

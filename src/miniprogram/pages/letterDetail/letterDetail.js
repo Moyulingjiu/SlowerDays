@@ -1,19 +1,19 @@
-// miniprogram/pages/writePage/writePage.js
+// miniprogram/pages/letterDetail/letterDetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    recipientPageshow: false,
-    stampPageshow: false,
-    popupName: "None"
+    haveGift: true,
+    giftDetailShow: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
   },
 
   /**
@@ -67,40 +67,13 @@ Page({
 
   onClose() {
     this.setData({ 
-      recipientPageshow: false,
-      stampPageshow: false
+      giftDetailShow: false
      });
   },
 
-  changeRecipient(){
-    this.setData({ recipientPageshow: true });
-  },
-
-  changeStampPage(event){
-    if(event.detail == 0){
-      this.setData({ 
-        stampPageshow: true,
-        popupName: "选择邮票"
-       });
-    }
-    else if(event.detail == 1){
-      this.setData({ 
-        stampPageshow: true,
-        popupName: "选择信纸"
-       });
-    }
-    else if(event.detail == 2){
-      this.setData({ 
-        stampPageshow: true,
-        popupName: "选择伴手礼"
-       });
-    }
-    else if(event.detail == 3){
-      wx.showToast({
-        title: '发送成功',
-        icon: 'success',
-        duration: 2000
-      })
-    }
+  onGiftDetail(){
+    this.setData({ 
+      giftDetailShow: true
+     });
   }
 })

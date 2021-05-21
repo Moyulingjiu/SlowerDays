@@ -1,12 +1,18 @@
 // miniprogram/pages/index/index.js
+import Notify from '../miniprogram_npm/@vant/weapp/notify/notify';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    touchStartTime: 0,   // 触摸开始时间
+    touchEndTime: 0,    // 触摸结束时间
+    lastTapTime: 0,    // 最后一次单击事件点击发生时间
+    treeHoleBackground: "pink",
     username: "伊蕾娜",
     active: 0,
+    transferStatusCardHeight: "100px",
     bottom1: "12%",
     bottom2: "12%",
     portraitURL: "cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/portrait/伊蕾娜头像.jpeg",
@@ -17,6 +23,16 @@ Page({
     lettersdetailshow: false,
     collapseMenuShow: false
   },
+    /// 按钮触摸开始触发的事件
+    touchStart: function(e) {
+      this.touchStartTime = e.timeStamp
+    },
+  
+    /// 按钮触摸结束触发的事件
+    touchEnd: function(e) {
+      this.touchEndTime = e.timeStamp
+    },
+    
   onChange(event) {
     // event.detail 的值为当前选中项的索引
     this.setData({ active: event.detail });
@@ -49,7 +65,8 @@ Page({
   onLoad: function (options) {
     var that = this
     this.setData({
-      frelationshipLength: (that.data.username.length-1)*15+20 + "px"
+      frelationshipLength: (that.data.username.length-1)*15+20 + "px",
+      // transferStatusCardHeight: 
       })
   },
 
@@ -131,5 +148,42 @@ Page({
     wx.navigateTo({
       url: '../writePage/writePage',
     })
+  },
+
+  onLetterDetail(){
+    wx.navigateTo({
+      url: '../letterDetail/letterDetail',
+    })
+  },
+
+  onTreeHoleTap(e){
+    var that = this
+    if (that.touchEndTime - that.touchStartTime < 350) {
+      // 当前点击的时间
+      var currentTime = e.timeStamp
+      var lastTapTime = that.lastTapTime
+      // 更新最后一次点击时间
+      that.lastTapTime = currentTime
+      if (currentTime - lastTapTime < 300) {
+        console.log("double tap")
+        // 成功触发双击事件时，取消单击事件的执行
+        clearTimeout(that.lastTapTimeoutFunc);
+        Notify({
+          message: '树洞作者已收到你的喜欢❤',
+          color: '#ad0000',
+          background: '#ffe1e1',
+        });
+      } else {
+        // 单击事件延时300毫秒执行，这和最初的浏览器的点击300ms延时有点像。
+        that.lastTapTimeoutFunc = setTimeout(function () {
+          console.log("tap")
+          wx.showModal({
+            title: '提示',
+            content: '单击事件被触发',
+            showCancel: false
+          })
+        }, 300);
+      }
+    } 
   }
 })

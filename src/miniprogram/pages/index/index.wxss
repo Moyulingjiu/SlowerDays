@@ -44,6 +44,25 @@ swiper image{
   transition:bottom 0.5s;
 }
 
+.treeholecard{
+  border-radius: 10px;
+  background: #ffffff;
+  height: 110px;
+  margin:10px 20px;
+}
+
+.treeholecontent{
+  position:relative;
+  top: 14px;
+  left: 4px;
+  height: 65%;
+  /* width: 86%; */
+  padding: 8px;
+  font-size:14px;
+  overflow: hidden;
+  color: #006363;
+}
+
 .messagecard{
   border-radius: 10px;
   background: #ffffff;
@@ -87,6 +106,7 @@ swiper image{
   background: #ffffff;
   height: 100px;
   margin:20px;
+  transition: height 0.5s;
 }
 
 .transferStatusTitle{
