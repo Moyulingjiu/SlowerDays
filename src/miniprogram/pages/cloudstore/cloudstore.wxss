@@ -25,9 +25,26 @@ page{
    top: auto;
 }
 
-
+.writeTools image{
+  width:100%;
+  position: absolute;
+  top:0px;
+  bottom:0px;
+}
 
 .self{
   border-radius:10rpx;
   display: block;
 }
+
+.child{
+  width: 100px;
+  height: 24px;  
+  position: absolute;
+  left: 0;
+  top: 10px;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  text-align: center;
+}  
