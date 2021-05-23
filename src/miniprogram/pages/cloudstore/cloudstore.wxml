@@ -18,20 +18,30 @@
 
     <!-- 写信工具 -->
     <van-tab class="tools"  title="写信工具">
-    <van-grid column-num="2" clickable="true" square="true" use-slot="true" center="true" >
+    <van-cell-group>
+       <van-cell title="选择你的写信工具吧~" />
+    </van-cell-group>
+    <van-grid column-num="2" clickable="true" square="true"  >
+
+    <view class="writeTools">
     <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
       <!-- <text >信封样图
     </text> -->
+    
       <image
         style="width: 100%; height: 100%;"
-        src="../images/cloudstore/paper.jpg" 
+        src="cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/test/images/cloudstore/paper.jpg" 
       />
+
+      <view class="child">信封</view>
+
     </van-grid-item>
     <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="../paper/paper">
       <image
         style="width: 100%; height: 100%;"
-        src="../images/cloudstore/sale1.jpg" 
+        src="cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/test/images/cloudstore/sale1.jpg" 
       />
+      <view class="child">信纸</view>
     </van-grid-item>
 
   <van-grid-item use-slot wx:for="{{ 1 }}" wx:for-item="index" url="../stamps/stamps">
@@ -39,37 +49,41 @@
   </text> -->
     <image
         style="width: 100%; height: 100%;"
-        src="../images/cloudstore/stamp3.jpg" 
+        src="cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/test/images/cloudstore/stamp3.jpg" 
       /> 
-  
+    <view class="child">邮票</view>
     </van-grid-item>
     <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="../paper/paper">
-      <text >其他
-  </text>
+      
     <!-- <image
         style="width: 100%; height: 100%;"
         src="../images/cloudstore/stamp4.jpg" 
       /> -->
+      <view class="child">其他</view>
     </van-grid-item> 
+  </view>
   </van-grid>
   </van-tab>
 
   <!-- 伴手礼 -->
     <van-tab title="伴手礼">
       <view class="goods"  >  
-    
-      <van-grid column-num="2" clickable="true" square="true" use-slot="true" center="true" >
+    <van-cell-group>
+       <van-cell title="选择你的伴手礼吧~" />
+    </van-cell-group>
+    <van-grid column-num="2" clickable="true" square="true" >
+<view class="writeTools">
     <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
       <image
         style="width: 100%; height: 100%;"
-        src="../images/cloudstore/gift1.jpg" 
+        src="cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/test/images/cloudstore/gift1.jpg" 
       />
     </van-grid-item>
 
     <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
       <image
         style="width: 100%; height: 100%;"
-        src="../images/cloudstore/gift2.jpg"
+        src="cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/test/images/cloudstore/gift2.jpg"
       />
     </van-grid-item>
     <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
@@ -90,6 +104,7 @@
         src="../images/cloudstore/sale4.jpg"
       /> -->
     </van-grid-item>
+  </view> 
     </van-grid>
     </view>  
     </van-tab>
@@ -97,6 +112,7 @@
   <!-- 热门推荐 -->
   <van-tab title="热门推荐">
     <van-grid column-num="2" clickable="true" square="true" use-slot="true" center="true" >
+      <view class="writeTools">
     <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
       <text >信封热门第一
     </text>
@@ -110,77 +126,12 @@
     <text >信封热门第三
     </text>
     </van-grid-item>
+  </view>
+
     </van-grid>
   </van-tab>
 
-  <!-- 购买服务 -->
-
-  <van-tab title="购买服务">
-    <view class="self" >
-      <text style='padding-left: 18px ' >用户名称</text></view>
-    <van-icon name="https://b.yzcdn.cn/vant/icon-demo-1126.png" size="25" custom-style="width: 200rpx; height: 250rpx; " />
-  <view class="line">
-    <van-cell
-    is-link
-    title="充值入口"
-    link-type="navigateTo"
-    url="../charge/charge"
-    />
-    </view>
-    <view class="line2">
-    <van-cell
-    is-link
-    title="账户余额"
-    link-type="navigateTo"
-    url=""
-    />
-    </view>
-    
-  </van-tab>
-
-
-  </van-tabs>
-
-
-  <!--新品推荐  -->
-  <view class="goods" style="width: 750rpx; height: 306rpx; display: block; box-sizing: border-box; left: NaNrpx; ">  
-    <van-divider contentPosition="left" textColor="#1989fa" ></van-divider>
-  <view  class="top">
-  <van-icon name="new" size="32px" color="rgb(245, 94, 94)"/>
-  </view>
-    
-    <van-grid column-num="2" clickable="true" square="true" use-slot="true" center="false" >
-    <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="../paper/paper" >
-      <image
-        style="width: 100%; height: 100%;"
-        src="../images/cloudstore/sale1.jpg" 
-        
-      />
-
-
-      <image
-        style="width: 100%; height: 100%;"
-        src="../images/cloudstore/sale2.jpg"
-      />
-      <image
-        style="width: 100%; height: 100%;"
-        src="../images/cloudstore/sale3.jpg"
-      />
-      <image
-        style="width: 100%; height: 100%;"
-        src="../images/cloudstore/sale4.jpg"
-      />
-    </van-grid-item>
-    <!--邮票等推荐  -->
-    <van-grid-item use-slot wx:for="{{ 1 }}" url="../stamps/stamps" wx:for-item="index" style="width: 280rpx; height: 258rpx; display: inline; box-sizing: content-box; left: NaNrpx; top: NaNrpx" >
-      <image class="stamp1"
-        style="width: 340rpx; height: 340rpx;   box-sizing: border-box"
-        src="../images/cloudstore/stamp1.jpg" 
-      />
-      
-    </van-grid-item>
-  </van-grid>
-  </view>
+</van-tabs>
 </scroll-view>
 
 <van-tabbar active="{{ active }}" bind:change="onChange">
