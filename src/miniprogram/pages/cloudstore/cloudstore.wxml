@@ -24,7 +24,7 @@
     <van-grid column-num="2" clickable="true" square="true"  >
 
     <view class="writeTools">
-    <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
+    <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="../envelope/envelope">
       <!-- <text >信封样图
     </text> -->
     

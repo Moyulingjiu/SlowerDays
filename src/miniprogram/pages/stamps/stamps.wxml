@@ -1,24 +1,16 @@
-<!--pages/stamps/stamps.wxml-->
-<van-grid column-num="2" clickable="true" square="true" use-slot="true" center="true" >
-  <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
-    <image
-      style="width: 100%; height: 100%;"
-      src="../images/cloudstore/stamp2.jpg" 
-    />
-  </van-grid-item>
+<view class="all">
+<van-cell-group>
+  <van-cell title="邮票" />
+</van-cell-group>
+</view>
 
- <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
- <image
-      style="width: 100%; height: 100%;"
-      src="../images/cloudstore/stamp3.jpg" 
-    />
- 
-  </van-grid-item>
-  <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
-  <image
-      style="width: 100%; height: 100%;"
-      src="../images/cloudstore/stamp4.jpg" 
-    />
-  </van-grid-item> 
-</van-grid>
-
+<view class="show">
+<!--内容信封展示-->
+<van-card
+  price="10.00"
+  desc="创作源泉来自美好的生活"
+  title="邮票"
+  thumb="{{imageURL}}"
+  thumb-link=""
+/>
+</view>
