@@ -5,7 +5,8 @@
     "pages/writePage/writePage",
     "pages/cloudstore/cloudstore",
     "pages/letterDetail/letterDetail",
-    "pages/personalPage/personalPage"
+    "pages/personalPage/personalPage",
+    "pages/envelopeDetail/envelopeDetail"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -35,5 +35,9 @@ Component({
   //     }
   //   }
   // },
-  
+  goToTalkPage:function(param){
+    wx.navigateTo({
+      url: '../envelopeDetail/envelopeDetail',
+    })
+  }
 })

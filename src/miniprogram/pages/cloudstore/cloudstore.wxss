@@ -30,6 +30,9 @@ page{
   position: absolute;
   top:0px;
   bottom:0px;
+  opacity: 0.60;
+  background-color: rgb(105, 105, 105);
+
 }
 
 .self{
@@ -39,12 +42,17 @@ page{
 
 .child{
   width: 100px;
-  height: 24px;  
+  height: 30px;  
   position: absolute;
   left: 0;
-  top: 10px;
+  top: 50px;
   right: 0;
   bottom: 0;
   margin: auto;
   text-align: center;
+  color:rgb(75, 71, 71);
+  font-weight: 550;
+  z-index: 2;
 }  
+
+
