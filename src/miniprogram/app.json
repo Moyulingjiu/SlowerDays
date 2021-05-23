@@ -4,7 +4,8 @@
     "pages/register/register",
     "pages/writePage/writePage",
     "pages/cloudstore/cloudstore",
-    "pages/letterDetail/letterDetail"
+    "pages/letterDetail/letterDetail",
+    "pages/personalPage/personalPage"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

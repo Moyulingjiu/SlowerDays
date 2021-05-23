@@ -21,10 +21,19 @@
 <!-- 树洞卡片 -->
 <view class="treeholecard" style="background-color:{{treeHoleBackground}}" bindtap="onTreeHoleTap" bindtouchstart="touchStart" bindtouchend="touchEnd">
   <van-tag plain type="primary" class="infor">树洞</van-tag>
-  <view class="treeholecontent">
+  <view class="treeholecontent" >
     <text>我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方</text>
   </view>
 </view>
+
+<!-- 树洞详细页 -->
+<van-popup show="{{ treeholeshow }}" bind:close="onClose" round custom-style="background-color:{{treeHoleBackground}}">
+  <view class="detailletters">
+    <view class="treeholecontent" >
+      <text>我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方</text>
+    </view>
+  </view>
+</van-popup>
 
 <!-- 好友卡片 -->
 <view class="messagecard" bindtap="onLettersDetail" wx:for="{{2}}">
@@ -57,6 +66,7 @@
   <view>
     <van-button round icon="edit" type="default" class="collapseMenu" style="bottom:{{bottom1}};" bindtap="onWrite"></van-button>
     <van-button round icon="description" type="default" class="collapseMenu" style="bottom:{{bottom2}};"></van-button>
+    <van-button round icon="records" type="default" class="collapseMenu" style="bottom:{{bottom3}};"></van-button>
     <van-button round icon="{{isPlus}}" type="default" class="collapseMenu" bindtap="tapCollapseMenu"></van-button>
   </view>
 </van-overlay>
@@ -65,11 +75,19 @@
 <van-overlay show="{{ writeShow }}" bind:click="onClickHide">
   <view class="wrapper">
     <van-button round plain type="info" class="writebutton" bindtap="onNewFriend">认识一个新朋友</van-button>
-    <van-button round plain type="info" class="writebutton">与老朋友叙叙旧</van-button>
-    <van-button round plain type="info" class="writebutton">写一封时间胶囊</van-button>
+    <van-button round plain type="info" class="writebutton" bindtap="onOldFriend">与老朋友叙叙旧</van-button>
+    <!-- <van-button round plain type="info" class="writebutton">写一封时间胶囊</van-button> -->
   </view>
 </van-overlay>
 </scroll-view>
+
+<van-popup show="{{ treeholeshow }}" bind:close="onClose" round custom-style="background-color:{{treeHoleBackground}}">
+  <view class="detailletters">
+    <view class="treeholecontent" >
+      <text>我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方</text>
+    </view>
+  </view>
+</van-popup>
 
 <!-- 底部bar -->
 <van-tabbar active="{{ active }}" bind:change="onChange">

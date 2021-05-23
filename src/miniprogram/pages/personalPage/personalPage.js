@@ -1,12 +1,14 @@
-// miniprogram/pages/index/index.js
+// miniprogram/pages/personalPage/personalPage.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    active: 1,
+    active: 2,
+    portraitURL: "cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/portrait/伊蕾娜头像.jpeg"
   },
+
   onChange(event) {
     // event.detail 的值为当前选中项的索引
     this.setData({ active: event.detail });
@@ -14,9 +16,10 @@ Page({
       wx.redirectTo({
         url: '../index/index',
       })
-    }else if(event.detail == 2){
+    }
+    else if(event.detail == 1){
       wx.redirectTo({
-        url: '../personalPage/personalPage',
+        url: '../cloudstore/cloudstore',
       })
     }
   },
@@ -25,6 +28,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
   },
 
   /**
@@ -74,6 +78,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
+  }
 })

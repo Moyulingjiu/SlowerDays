@@ -1,0 +1,28 @@
+<!--miniprogram/pages/personalPage/personalPage.wxml-->
+<scroll-view class="mainview" scroll-y="true">
+  <image src="cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/test/images/personalpage/5958bab6389cb7261c1b5f123b09dc8d0d710fd6.jpg@1320w_662h.webp" mode="aspectFill" style="width:750rpx;height:220px;position: absolute;"></image>
+  <view class="backimagemask"></view>
+  <van-button round icon="chat-o" type="default" class="notice"></van-button>
+  <view>
+    <van-image round width="80px"  height="80px" src="{{portraitURL}}" class="portrait"/>
+    <view class="username">伊蕾娜</view>
+    <!-- <view class="sex">女</view> -->
+    <view class="idnum">ID:10010</view>
+    <van-tag plain type="success" class="tags">信誉优秀</van-tag>
+    <van-tag plain type="primary" class="tags">代币：250</van-tag>
+  </view>
+  <view class="signaturecard">
+    <view class="signaturetext">我们给他形成一个两面包夹芝士三面宝两面包夹芝</view>
+    <!-- 46个字符 -->
+  </view>
+  <van-cell-group class="celllist">
+    <van-cell title="我的成就" icon="star-o" is-link />
+    <van-cell title="我的物品" icon="send-gift-o" is-link />
+    <van-cell title="我的树洞" icon="comment-o" is-link />
+  </van-cell-group>
+</scroll-view>
+<van-tabbar active="{{ active }}" bind:change="onChange">
+  <van-tabbar-item icon="friends-o">首页</van-tabbar-item>
+  <van-tabbar-item icon="home-o">云深小卖部</van-tabbar-item>
+  <van-tabbar-item icon="wap-home-o">我的</van-tabbar-item>
+</van-tabbar>

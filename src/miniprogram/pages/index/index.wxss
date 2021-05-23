@@ -49,6 +49,7 @@ swiper image{
   background: #ffffff;
   height: 110px;
   margin:10px 20px;
+  box-shadow: 2px 2px 10px grey;
 }
 
 .treeholecontent{

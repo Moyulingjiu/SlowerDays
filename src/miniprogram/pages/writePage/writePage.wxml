@@ -3,7 +3,7 @@
 <van-cell-group>
   <van-cell title="收件人" />
 </van-cell-group>
-<van-tag plain type="primary" class="nametag" bindtap="changeRecipient">一位有缘的陌生人</van-tag>
+<van-tag plain type="primary" class="nametag" bindtap="changeRecipient">{{recipient}}</van-tag>
 
 <van-popup show="{{ recipientPageshow }}" bind:close="onClose" round>
   <view class="recipientPage">

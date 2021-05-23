@@ -15,13 +15,15 @@ Page({
     transferStatusCardHeight: "100px",
     bottom1: "12%",
     bottom2: "12%",
+    bottom3: "12%",
     portraitURL: "cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/portrait/伊蕾娜头像.jpeg",
     isPlus: "plus",
     frelationshipLength: "20px",
     show: false,
     writeShow: false,
     lettersdetailshow: false,
-    collapseMenuShow: false
+    collapseMenuShow: false,
+    treeholeshow: false
   },
     /// 按钮触摸开始触发的事件
     touchStart: function(e) {
@@ -41,6 +43,11 @@ Page({
         url: '../cloudstore/cloudstore',
       })
     }
+    else if(event.detail == 2){
+      wx.redirectTo({
+        url: '../personalPage/personalPage',
+      })
+    }
   },
   onLettersDetail(){
     this.setData({ lettersdetailshow: true });
@@ -50,9 +57,11 @@ Page({
       lettersdetailshow: false,
       bottom1: "12%",
       bottom2: "12%",
+      bottom3: "12%",
       isPlus: "plus",
       show:false,
-      collapseMenuShow: false
+      collapseMenuShow: false,
+      treeholeshow: false
     });
   },
   onClickHide() {
@@ -124,6 +133,7 @@ Page({
       this.setData({
         bottom1: "12%",
         bottom2: "12%",
+        bottom3: "12%",
         isPlus: "plus",
         show:false,
         collapseMenuShow: false
@@ -133,6 +143,7 @@ Page({
       this.setData({
         bottom1: "20%",
         bottom2: "28%",
+        bottom3: "36%",
         isPlus: "cross",
         show:true,
         collapseMenuShow: true
@@ -146,7 +157,13 @@ Page({
 
   onNewFriend(){
     wx.navigateTo({
-      url: '../writePage/writePage',
+      url: '../writePage/writePage?isNew=true',
+    })
+  },
+
+  onOldFriend(){
+    wx.navigateTo({
+      url: '../writePage/writePage?isNew=false',
     })
   },
 
@@ -165,7 +182,6 @@ Page({
       // 更新最后一次点击时间
       that.lastTapTime = currentTime
       if (currentTime - lastTapTime < 300) {
-        console.log("double tap")
         // 成功触发双击事件时，取消单击事件的执行
         clearTimeout(that.lastTapTimeoutFunc);
         Notify({
@@ -176,11 +192,8 @@ Page({
       } else {
         // 单击事件延时300毫秒执行，这和最初的浏览器的点击300ms延时有点像。
         that.lastTapTimeoutFunc = setTimeout(function () {
-          console.log("tap")
-          wx.showModal({
-            title: '提示',
-            content: '单击事件被触发',
-            showCancel: false
+          that.setData({
+            treeholeshow: true
           })
         }, 300);
       }

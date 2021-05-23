@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    recipient: "一位有缘的陌生人",
     recipientPageshow: false,
     stampPageshow: false,
     popupName: "None"
@@ -14,6 +15,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
+    if(options.isNew == "true"){
+      this.setData({
+        recipient: "一位有缘的陌生人",
+        })
+    }else{
+      this.setData({
+        recipient: "点击选择收件人",
+        })
+    }
   },
 
   /**
