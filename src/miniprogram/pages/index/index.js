@@ -23,7 +23,8 @@ Page({
     writeShow: false,
     lettersdetailshow: false,
     collapseMenuShow: false,
-    treeholeshow: false
+    treeholeshow: false,
+    taskShow: false
   },
     /// 按钮触摸开始触发的事件
     touchStart: function(e) {
@@ -61,7 +62,7 @@ Page({
       isPlus: "plus",
       show:false,
       collapseMenuShow: false,
-      treeholeshow: false
+      treeholeshow: false,
     });
   },
   onClickHide() {
@@ -153,6 +154,16 @@ Page({
 
   onWrite(){
     this.setData({ writeShow: true });
+  },
+
+  onTask(){
+    this.setData({ taskShow: true });
+  },
+
+  onTaskClose() {
+    this.setData({ 
+      taskShow: false
+    });
   },
 
   onNewFriend(){

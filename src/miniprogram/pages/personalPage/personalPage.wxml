@@ -16,9 +16,12 @@
     <!-- 46个字符 -->
   </view>
   <van-cell-group class="celllist">
-    <van-cell title="我的成就" icon="star-o" is-link />
-    <van-cell title="我的物品" icon="send-gift-o" is-link />
-    <van-cell title="我的树洞" icon="comment-o" is-link />
+    <van-cell title="我的成就" icon="star-o" is-link link-type="navigateTo"
+  url="../achievement/achievement" />
+    <van-cell title="我的物品" icon="send-gift-o" is-link link-type="navigateTo"
+  url="../myItems/myItems" />
+    <van-cell title="我的树洞" icon="comment-o" is-link link-type="navigateTo"
+  url="../myTreeHole/myTreeHole" />
   </van-cell-group>
 </scroll-view>
 <van-tabbar active="{{ active }}" bind:change="onChange">

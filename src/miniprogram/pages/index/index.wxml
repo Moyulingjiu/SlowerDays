@@ -65,7 +65,7 @@
   </van-transition>
   <view>
     <van-button round icon="edit" type="default" class="collapseMenu" style="bottom:{{bottom1}};" bindtap="onWrite"></van-button>
-    <van-button round icon="description" type="default" class="collapseMenu" style="bottom:{{bottom2}};"></van-button>
+    <van-button round icon="description" type="default" class="collapseMenu" style="bottom:{{bottom2}};" bindtap="onTask"></van-button>
     <van-button round icon="records" type="default" class="collapseMenu" style="bottom:{{bottom3}};"></van-button>
     <van-button round icon="{{isPlus}}" type="default" class="collapseMenu" bindtap="tapCollapseMenu"></van-button>
   </view>
@@ -81,11 +81,16 @@
 </van-overlay>
 </scroll-view>
 
-<van-popup show="{{ treeholeshow }}" bind:close="onClose" round custom-style="background-color:{{treeHoleBackground}}">
+<!-- 任务详细页 -->
+<van-popup show="{{ taskShow }}" bind:close="onTaskClose" round>
   <view class="detailletters">
-    <view class="treeholecontent" >
-      <text>我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方</text>
-    </view>
+    <text>每日任务</text>
+    <van-divider />
+    <van-cell-group>
+      <van-cell title="任务名称" value="已完成" label="任务描述" />
+      <van-cell title="任务名称" value="尚未完成" label="任务描述" />
+      <van-cell title="任务名称" value="尚未完成" label="任务描述" />
+    </van-cell-group>
   </view>
 </van-popup>
 

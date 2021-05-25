@@ -1,0 +1,47 @@
+/* miniprogram/pages/myTreeHole/myTreeHole.wxss */
+page{
+  height: 100%;
+}
+
+.treeholecard{
+  border-radius: 10px;
+  background: #ffffff;
+  height: 110px;
+  margin:10px 20px;
+  box-shadow: 2px 2px 10px grey;
+}
+
+.treeholecontent{
+  position:relative;
+  top: 14px;
+  left: 4px;
+  height: 65%;
+  /* width: 86%; */
+  padding: 8px;
+  font-size:14px;
+  overflow: hidden;
+  color: #006363;
+}
+
+.time{
+  position:absolute;
+  left: 32px;
+  margin-top: 4px;
+  font-size: small;
+}
+
+.infor{
+  position:absolute;
+  right:25px;
+}
+
+.favor{
+  position:absolute;
+  right:65px;
+}
+
+.detailletters{
+  height: 900rpx;
+  width: 600rpx;
+  margin:20px;
+}

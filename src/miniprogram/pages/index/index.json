@@ -9,6 +9,8 @@
     "van-transition": "@vant/weapp/transition/index",
     "van-popup": "@vant/weapp/popup/index",
     "van-overlay": "@vant/weapp/overlay/index",
-    "van-notify": "@vant/weapp/notify/index"
+    "van-notify": "@vant/weapp/notify/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index"
   }
 }
