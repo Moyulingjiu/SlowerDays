@@ -8,6 +8,6 @@
     <input placeholder="请输入密码"/>
     <button class="login-btn" bindtap="login" >登录</button>
     <view class="three-line">一一一一一第三方登录一一一一一</view>
-    <button class="login-btn" style="background-color:green;">微信登录</button>
+    <button class="login-btn" style="background-color:green;" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">微信登录</button>
   </view>
 </view>

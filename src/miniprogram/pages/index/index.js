@@ -23,7 +23,8 @@ Page({
     writeShow: false,
     lettersdetailshow: false,
     collapseMenuShow: false,
-    treeholeshow: false
+    treeholeshow: false,
+    isHide: false
   },
     /// 按钮触摸开始触发的事件
     touchStart: function(e) {

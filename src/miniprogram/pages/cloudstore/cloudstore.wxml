@@ -54,7 +54,7 @@
    
     <view class="child">邮票</view>
     </van-grid-item>
-    <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="../paper/paper">
+    <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="../login/login">
       
     <!-- <image
         style="width: 100%; height: 100%;"
