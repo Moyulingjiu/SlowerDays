@@ -160,6 +160,12 @@ Page({
     this.setData({ taskShow: true });
   },
 
+  onTreeHoleWrite(){
+    wx.navigateTo({
+      url: '../treeHoleWrite/treeHoleWrite',
+    })
+  },
+
   onTaskClose() {
     this.setData({ 
       taskShow: false

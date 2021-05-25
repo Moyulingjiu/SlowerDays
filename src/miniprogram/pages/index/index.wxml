@@ -66,7 +66,7 @@
   <view>
     <van-button round icon="edit" type="default" class="collapseMenu" style="bottom:{{bottom1}};" bindtap="onWrite"></van-button>
     <van-button round icon="description" type="default" class="collapseMenu" style="bottom:{{bottom2}};" bindtap="onTask"></van-button>
-    <van-button round icon="records" type="default" class="collapseMenu" style="bottom:{{bottom3}};"></van-button>
+    <van-button round icon="records" type="default" class="collapseMenu" style="bottom:{{bottom3}};" bindtap="onTreeHoleWrite"></van-button>
     <van-button round icon="{{isPlus}}" type="default" class="collapseMenu" bindtap="tapCollapseMenu"></van-button>
   </view>
 </van-overlay>
