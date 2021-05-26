@@ -1,0 +1,27 @@
+<!--miniprogram/pages/letterDetail/letterDetail.wxml-->
+<view>
+  <view class="sender">From 寄件人</view>
+  <view wx:if="{{haveGift}}" bindtap="onGiftDetail">
+    <van-tag plain type="warning " class="gifttag">此信附有伴手礼</van-tag>
+    <view class="letterdate">2021/5/21</view>
+  </view>
+  <view wx:else>
+    <view class="letterdate" style="top: 15px;">2021/5/21</view>
+  </view>
+</view>
+
+<van-popup show="{{ giftDetailShow }}" bind:close="onClose" round>
+  <view class="giftdetailpage">
+    <text>伴手礼内容</text>
+    <van-divider />
+    <van-grid column-num="2">
+      <van-grid-item icon="photo-o" text="文字" wx:for="{{ 4 }}" />
+    </van-grid>
+  </view>
+</van-popup>
+
+<van-divider customStyle="color: #1989fa; border-color: #1989fa;">
+</van-divider>
+<view class="mainview">
+  这里是信件文本内容
+</view>

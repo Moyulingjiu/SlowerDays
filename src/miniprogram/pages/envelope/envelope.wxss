@@ -1,0 +1,12 @@
+/* pages/envelope/envelope.wxss */
+/* pages/test/test.wxss */
+.loadImg{
+  width:100vw;
+  height:46.3vw;
+  transition: all .2s ease-in-out;
+  opacity: 0;
+}
+.loadImg.active{
+  opacity: 1
+}
+

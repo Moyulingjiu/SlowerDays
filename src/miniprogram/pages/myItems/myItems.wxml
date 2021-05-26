@@ -1,0 +1,11 @@
+<!--miniprogram/pages/myItems/myItems.wxml-->
+<van-tabs animated>
+  <van-tab title="套装">
+    <view class="card"></view>
+  </van-tab>
+  <van-tab title="伴手礼">
+    <van-grid column-num="3">
+      <van-grid-item icon="photo-o" text="文字" wx:for="{{ 6 }}" />
+    </van-grid>
+  </van-tab>
+</van-tabs>

@@ -1,124 +1,219 @@
-//index.js
-const app = getApp()
-
+// miniprogram/pages/index/index.js
+import Notify from '../miniprogram_npm/@vant/weapp/notify/notify';
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    avatarUrl: './user-unlogin.png',
-    userInfo: {},
-    hasUserInfo: false,
-    logged: false,
-    takeSession: false,
-    requestResult: '',
-    canIUseGetUserProfile: false,
-    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') // 如需尝试获取用户信息可改为false
+    touchStartTime: 0,   // 触摸开始时间
+    touchEndTime: 0,    // 触摸结束时间
+    lastTapTime: 0,    // 最后一次单击事件点击发生时间
+    treeHoleBackground: "pink",
+    username: "伊蕾娜",
+    active: 0,
+    transferStatusCardHeight: "100px",
+    bottom1: "12%",
+    bottom2: "12%",
+    bottom3: "12%",
+    portraitURL: "cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/portrait/伊蕾娜头像.jpeg",
+    isPlus: "plus",
+    frelationshipLength: "20px",
+    show: false,
+    writeShow: false,
+    lettersdetailshow: false,
+    collapseMenuShow: false,
+    treeholeshow: false,
+    taskShow: false
   },
-
-  onLoad: function() {
-    if (!wx.cloud) {
+    /// 按钮触摸开始触发的事件
+    touchStart: function(e) {
+      this.touchStartTime = e.timeStamp
+    },
+  
+    /// 按钮触摸结束触发的事件
+    touchEnd: function(e) {
+      this.touchEndTime = e.timeStamp
+    },
+    
+  onChange(event) {
+    // event.detail 的值为当前选中项的索引
+    this.setData({ active: event.detail });
+    if(event.detail == 1){
       wx.redirectTo({
-        url: '../chooseLib/chooseLib',
+        url: '../cloudstore/cloudstore',
       })
-      return
     }
-    if (wx.getUserProfile) {
+    else if(event.detail == 2){
+      wx.redirectTo({
+        url: '../personalPage/personalPage',
+      })
+    }
+  },
+  onLettersDetail(){
+    this.setData({ lettersdetailshow: true });
+  },
+  onClose() {
+    this.setData({ 
+      lettersdetailshow: false,
+      bottom1: "12%",
+      bottom2: "12%",
+      bottom3: "12%",
+      isPlus: "plus",
+      show:false,
+      collapseMenuShow: false,
+      treeholeshow: false,
+    });
+  },
+  onClickHide() {
+    this.setData({ writeShow: false });
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var that = this
+    this.setData({
+      frelationshipLength: (that.data.username.length-1)*15+20 + "px",
+      // transferStatusCardHeight: 
+      })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  },
+
+  tapCollapseMenu: function(){
+    if(this.data.bottom1 != "12%"){
       this.setData({
-        canIUseGetUserProfile: true,
-      })
+        bottom1: "12%",
+        bottom2: "12%",
+        bottom3: "12%",
+        isPlus: "plus",
+        show:false,
+        collapseMenuShow: false
+       })
     }
-  },
-
-  getUserProfile() {
-    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    wx.getUserProfile({
-      desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        this.setData({
-          avatarUrl: res.userInfo.avatarUrl,
-          userInfo: res.userInfo,
-          hasUserInfo: true,
-        })
-      }
-    })
-  },
-
-  onGetUserInfo: function(e) {
-    if (!this.data.logged && e.detail.userInfo) {
+    else{
       this.setData({
-        logged: true,
-        avatarUrl: e.detail.userInfo.avatarUrl,
-        userInfo: e.detail.userInfo,
-        hasUserInfo: true,
-      })
+        bottom1: "20%",
+        bottom2: "28%",
+        bottom3: "36%",
+        isPlus: "cross",
+        show:true,
+        collapseMenuShow: true
+       })
     }
   },
 
-  onGetOpenid: function() {
-    // 调用云函数
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {},
-      success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
-        app.globalData.openid = res.result.openid
-        wx.navigateTo({
-          url: '../userConsole/userConsole',
-        })
-      },
-      fail: err => {
-        console.error('[云函数] [login] 调用失败', err)
-        wx.navigateTo({
-          url: '../deployFunctions/deployFunctions',
-        })
-      }
+  onWrite(){
+    this.setData({ writeShow: true });
+  },
+
+  onTask(){
+    this.setData({ taskShow: true });
+  },
+
+  onTreeHoleWrite(){
+    wx.navigateTo({
+      url: '../treeHoleWrite/treeHoleWrite',
     })
   },
 
-  // 上传图片
-  doUpload: function () {
-    // 选择图片
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['compressed'],
-      sourceType: ['album', 'camera'],
-      success: function (res) {
-        wx.showLoading({
-          title: '上传中',
-        })
+  onTaskClose() {
+    this.setData({ 
+      taskShow: false
+    });
+  },
 
-        const filePath = res.tempFilePaths[0]
-        
-        // 上传图片
-        const cloudPath = `my-image${filePath.match(/\.[^.]+?$/)[0]}`
-        wx.cloud.uploadFile({
-          cloudPath,
-          filePath,
-          success: res => {
-            console.log('[上传文件] 成功：', res)
-
-            app.globalData.fileID = res.fileID
-            app.globalData.cloudPath = cloudPath
-            app.globalData.imagePath = filePath
-            
-            wx.navigateTo({
-              url: '../storageConsole/storageConsole'
-            })
-          },
-          fail: e => {
-            console.error('[上传文件] 失败：', e)
-            wx.showToast({
-              icon: 'none',
-              title: '上传失败',
-            })
-          },
-          complete: () => {
-            wx.hideLoading()
-          }
-        })
-      },
-      fail: e => {
-        console.error(e)
-      }
+  onNewFriend(){
+    wx.navigateTo({
+      url: '../writePage/writePage?isNew=true',
     })
   },
 
+  onOldFriend(){
+    wx.navigateTo({
+      url: '../writePage/writePage?isNew=false',
+    })
+  },
+
+  onLetterDetail(){
+    wx.navigateTo({
+      url: '../letterDetail/letterDetail',
+    })
+  },
+
+  onTreeHoleTap(e){
+    var that = this
+    if (that.touchEndTime - that.touchStartTime < 350) {
+      // 当前点击的时间
+      var currentTime = e.timeStamp
+      var lastTapTime = that.lastTapTime
+      // 更新最后一次点击时间
+      that.lastTapTime = currentTime
+      if (currentTime - lastTapTime < 300) {
+        // 成功触发双击事件时，取消单击事件的执行
+        clearTimeout(that.lastTapTimeoutFunc);
+        Notify({
+          message: '树洞作者已收到你的喜欢❤',
+          color: '#ad0000',
+          background: '#ffe1e1',
+        });
+      } else {
+        // 单击事件延时300毫秒执行，这和最初的浏览器的点击300ms延时有点像。
+        that.lastTapTimeoutFunc = setTimeout(function () {
+          that.setData({
+            treeholeshow: true
+          })
+        }, 300);
+      }
+    } 
+  }
 })

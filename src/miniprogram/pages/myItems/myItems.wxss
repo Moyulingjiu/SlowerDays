@@ -1,0 +1,6 @@
+/* miniprogram/pages/myItems/myItems.wxss */
+.card{
+  width: 750rpx;
+  height: 470rpx;
+  background: pink;
+}

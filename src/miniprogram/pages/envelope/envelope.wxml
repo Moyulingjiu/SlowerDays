@@ -1,0 +1,23 @@
+<!--pages/envelope/envelope.wxml-->
+<view class="all">
+<van-cell-group>
+  <van-cell title="信封" />
+</van-cell-group>
+</view>
+
+<view class="show">
+<!--内容信封展示-->
+<van-card
+  price="10.00"
+  desc="创作来源来自美丽的春天"
+  title="春日信封"
+  thumb="{{imageURL}}"
+  thumb-link="../envelope/detail.wxml"
+>
+  <view slot="footer">
+  <van-button bindtap='goToTalkPage' round type="info" size="mini" color="linear-gradient(to right, #4bb0ff, #6149f6)" >
+  了解更多  
+  </van-button>
+  </view>
+</van-card>
+</view>

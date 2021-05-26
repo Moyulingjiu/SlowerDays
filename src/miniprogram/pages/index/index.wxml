@@ -1,7 +1,102 @@
 <!--index.wxml-->
-<van-button type="primary">主要按钮</van-button>
-<van-button type="default">默认按钮</van-button>
-<van-button type="primary">主要按钮</van-button>
-<van-button type="info">信息按钮</van-button>
-<van-button type="warning">警告按钮</van-button>
-<van-button type="danger">危险按钮</van-button>
+
+<van-notify id="van-notify" />
+<scroll-view class="mainview" scroll-y="true">
+<!-- 滚动广告 -->
+<view class='whl-swiper-container' style="width: 710rpx; height: 274rpx; display: flex; box-sizing: border-box; left: 0rpx; top: 0rpx">
+
+<swiper autoplay="true" circular="true" class='whl-swiper' interval="5000" >
+  <swiper-item>
+    <image class="logo" mode="aspectFill" src='https://i0.hdslb.com/bfs/article/068c75267f7c5ea5bb14ff29703f3915d4779795.jpg@1320w_742h.webp'></image>
+  </swiper-item>
+  <swiper-item>
+    <image class="logo" mode="aspectFill" src='https://i0.hdslb.com/bfs/article/fa27121d129076dd858c9baaccb93227193f4ebd.jpg@1320w_662h.webp'></image>
+  </swiper-item>
+  <swiper-item>
+    <image class="logo" mode="aspectFill" src='https://i0.hdslb.com/bfs/article/9cba9da9565151ad8adcc42a2f432b6296c2b10f.jpg@1320w_606h.webp'></image>
+  </swiper-item>
+</swiper>
+</view> 
+
+<!-- 树洞卡片 -->
+<view class="treeholecard" style="background-color:{{treeHoleBackground}}" bindtap="onTreeHoleTap" bindtouchstart="touchStart" bindtouchend="touchEnd">
+  <van-tag plain type="primary" class="infor">树洞</van-tag>
+  <view class="treeholecontent" >
+    <text>我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方</text>
+  </view>
+</view>
+
+<!-- 树洞详细页 -->
+<van-popup show="{{ treeholeshow }}" bind:close="onClose" round custom-style="background-color:{{treeHoleBackground}}">
+  <view class="detailletters">
+    <view class="treeholecontent" >
+      <text>我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方</text>
+    </view>
+  </view>
+</van-popup>
+
+<!-- 好友卡片 -->
+<view class="messagecard" bindtap="onLettersDetail" wx:for="{{2}}">
+  <van-image round width="60px"  height="60px" lazy-load src="{{portraitURL}}" class="portrait"/>
+  <text class="friendname">{{username}}</text>
+  <van-tag round type="primary" class="relationship"  style="margin-left: {{frelationshipLength}};">笔友</van-tag>
+  <text class="describe">你与伊蕾娜已传递了X封信</text>
+  <van-tag plain type="success" class="infor">新的信件</van-tag>
+</view>
+
+<!-- 好友卡片展开详细，信件列表 -->
+<van-popup show="{{ lettersdetailshow }}" bind:close="onClose" round>
+  <view class="detailletters">
+    <view bindtap="onLetterDetail">
+      <view class="lettertime">2021-5-15 夜煞寄给伊蕾娜的信</view>
+      <view class="lettercover"></view>
+    </view>
+  </view>
+</van-popup>
+
+<!-- 右下按钮组 -->
+<van-button round icon="{{isPlus}}" type="default" class="collapseMenu" bindtap="tapCollapseMenu"></van-button>
+<van-overlay show="{{ collapseMenuShow }}" bind:click="onClose">
+  <van-transition show="{{ show }}" custom-class="block">
+    <view class="transferStatusCard" style="height:{{transferStatusCardHeight}}">
+      <text class="transferStatusTitle">您目前正有X封信运输中</text>
+      <van-tag plain type="warning" class="infor">遭遇了雨雪天气，受到延误</van-tag>
+    </view>
+  </van-transition>
+  <view>
+    <van-button round icon="edit" type="default" class="collapseMenu" style="bottom:{{bottom1}};" bindtap="onWrite"></van-button>
+    <van-button round icon="description" type="default" class="collapseMenu" style="bottom:{{bottom2}};" bindtap="onTask"></van-button>
+    <van-button round icon="records" type="default" class="collapseMenu" style="bottom:{{bottom3}};" bindtap="onTreeHoleWrite"></van-button>
+    <van-button round icon="{{isPlus}}" type="default" class="collapseMenu" bindtap="tapCollapseMenu"></van-button>
+  </view>
+</van-overlay>
+
+<!-- 写信 -->
+<van-overlay show="{{ writeShow }}" bind:click="onClickHide">
+  <view class="wrapper">
+    <van-button round plain type="info" class="writebutton" bindtap="onNewFriend">认识一个新朋友</van-button>
+    <van-button round plain type="info" class="writebutton" bindtap="onOldFriend">与老朋友叙叙旧</van-button>
+    <!-- <van-button round plain type="info" class="writebutton">写一封时间胶囊</van-button> -->
+  </view>
+</van-overlay>
+</scroll-view>
+
+<!-- 任务详细页 -->
+<van-popup show="{{ taskShow }}" bind:close="onTaskClose" round>
+  <view class="detailletters">
+    <text>每日任务</text>
+    <van-divider />
+    <van-cell-group>
+      <van-cell title="任务名称" value="已完成" label="任务描述" />
+      <van-cell title="任务名称" value="尚未完成" label="任务描述" />
+      <van-cell title="任务名称" value="尚未完成" label="任务描述" />
+    </van-cell-group>
+  </view>
+</van-popup>
+
+<!-- 底部bar -->
+<van-tabbar active="{{ active }}" bind:change="onChange">
+  <van-tabbar-item icon="friends-o">首页</van-tabbar-item>
+  <van-tabbar-item icon="home-o">云深小卖部</van-tabbar-item>
+  <van-tabbar-item icon="wap-home-o">我的</van-tabbar-item>
+</van-tabbar>

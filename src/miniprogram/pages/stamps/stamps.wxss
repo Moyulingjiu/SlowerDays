@@ -1,0 +1,12 @@
+/* pages/stamps/stamps.wxss */
+.child{
+  width: 100px;
+  height: 24px;  
+  position: absolute;
+  left: 0;
+  top: 10px;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  text-align: center;
+}  

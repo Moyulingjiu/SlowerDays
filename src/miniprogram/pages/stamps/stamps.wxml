@@ -1,0 +1,16 @@
+<view class="all">
+<van-cell-group>
+  <van-cell title="邮票" />
+</van-cell-group>
+</view>
+
+<view class="show">
+<!--内容信封展示-->
+<van-card
+  price="10.00"
+  desc="创作源泉来自美好的生活"
+  title="邮票"
+  thumb="{{imageURL}}"
+  thumb-link=""
+/>
+</view>

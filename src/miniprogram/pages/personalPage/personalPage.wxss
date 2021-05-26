@@ -1,0 +1,85 @@
+/* miniprogram/pages/personalPage/personalPage.wxss */
+page{
+  background-color: white;
+  height: 100%;
+}
+
+.mainview{
+  height: 92%;
+}
+
+.backimagemask{
+  position: absolute;
+  width:750rpx;
+  height:220px;
+  background-color: black;
+  opacity:0.4;
+}
+
+.notice{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  opacity:0.8;
+}
+
+.portrait{
+  position: relative;
+  top: 170px;
+  margin: 10px;
+}
+
+.sex{
+  position: absolute;
+  left: 160px;
+  top: 185px;
+  margin: 10px;
+  color: white;
+  font-size: small;
+}
+
+.username{
+  position: relative;
+  left: 90px;
+  top: 98px;
+  margin: 10px;
+  color: white;
+  font-size: large;
+}
+
+.idnum{
+  position: relative;
+  left: 90px;
+  top: 98px;
+  margin: 10px;
+  font-size: small;
+}
+
+.tags{
+  position: relative;
+  left: 160px;
+  top: 67px;
+  margin: 5px;
+}
+
+.signaturecard{
+  position: relative;
+  top: 80px;
+  border-radius: 10px;
+  background: #ffffff;
+  height: 100px;
+  margin:20px;
+  box-shadow: 1px 1px 2px grey;
+}
+
+.signaturetext{
+  line-height: 100px;
+  height: 100px;
+  text-align: center;
+  font-size: small;
+}
+
+.celllist{
+  position: relative;
+  top: 80px;
+}

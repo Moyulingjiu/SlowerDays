@@ -1,0 +1,13 @@
+<!--miniprogram/pages/treeHoleWrite/treeHoleWrite.wxml-->
+<van-cell-group>
+  <van-cell title="更改信纸色彩" />
+</van-cell-group>
+<view class="color-green" data-color="#66CC66" bindtap="changelettercolor"></view>
+<view class="color-blue" data-color="#006699" bindtap="changelettercolor"></view>
+<view class="color-violet" data-color="#666699" bindtap="changelettercolor"></view>
+<view class="color-grapefruit" data-color="#CC6666" bindtap="changelettercolor"></view>
+<view class="color-white" data-color="white" bindtap="changelettercolor"></view>
+<van-divider contentPosition="center" customStyle="color: orange; border-color: orange;" style="background:{{backgroundcolor}}">
+  想在树洞中投入什么信息吗？
+</van-divider>
+<textarea class="letterContent" bindblur="bindTextAreaBlur" placeholder="在这里开始书写你想说的内容吧"  style="background:{{backgroundcolor}}"/>

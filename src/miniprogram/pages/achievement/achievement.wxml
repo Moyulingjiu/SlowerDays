@@ -1,0 +1,14 @@
+<!--miniprogram/pages/achievement/achievement.wxml-->
+<view class="title">
+  <view>成就完成度：60%</view>
+  <van-progress percentage="60" show-pivot="{{false}}" custom-class="completionProgressBar"/>
+</view>
+<van-divider />
+
+<view class="messagecard" bindtap="onLettersDetail" wx:for="{{2}}">
+  <van-image round width="60px"  height="60px" lazy-load src="{{portraitURL}}" class="portrait"/>
+  <text class="taskName">{{taskName}}</text>
+  <van-tag round type="primary" class="level"  style="margin-left: {{levelLength}};">笔友</van-tag>
+  <text class="describe">传递X封信</text>
+  <van-tag plain type="primary" class="infor">展示中</van-tag>
+</view>
