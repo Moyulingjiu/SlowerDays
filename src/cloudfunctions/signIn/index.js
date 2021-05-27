@@ -9,7 +9,7 @@ const db = cloud.database()
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
 
-  let data = await db.collection("UserInfor").where({
+  let data = await db.collection("User").where({
     baseInformation: {
       openid: wxContext.OPENID
     }
@@ -22,7 +22,7 @@ exports.main = async (event, context) => {
   if (data.credit < 60)
     credit = 1
   else if (data.credit < 80)
-  credit = 2
+    credit = 2
 
   return {
     id: data.id,
