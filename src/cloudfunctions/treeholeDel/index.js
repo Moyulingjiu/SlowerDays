@@ -14,21 +14,25 @@ exports.main = async (event, context) => {
     id: treeholeId
   }).get()
   if (data.data.length == 0)
-    return {}
+    return false
   data = data.data[0]
 
-  
   let contact = await db.collection("User_TreeHole").where({
     id: id
   }).get()
   contact = contact.data[0]
   let index = contact.treeHole.indexOf(treeholeId)
-
-  if (data.isVailable) { // 树洞可见
-    return data
-  } else if (index != -1) { // 是树洞的拥有者
-    return data
-  } else { // 不可见还不是拥有者
-    return {}
-  }
+  if (index == -1)
+    return false
+  
+  await db.collection("TreeHole").where({
+    id: treeholeId
+  }).remove({
+    success: res => {
+      return true // 删除成功
+    },
+    fail: err => {
+      return false // 删除失败
+    }
+  })
 }
