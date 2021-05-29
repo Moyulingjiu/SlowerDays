@@ -23,6 +23,7 @@ exports.main = async (event, context) => {
   nowId = nowId.data[0]
   shopGiftId = nowId.shopGiftId
   nowId.shopGiftId += 1
+  delete nowId._id
   await db.collection("System").where({
     _id: "id"
   }).update({
@@ -35,6 +36,7 @@ exports.main = async (event, context) => {
     place: place,
     comments: comments,
   })
+  delete data._id
   await db.collection("Shop").where({
     _id: "example"
   }).update({

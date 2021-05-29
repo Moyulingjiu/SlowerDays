@@ -3,15 +3,14 @@ const cloud = require('wx-server-sdk')
 
 cloud.init()
 
+const db = cloud.database()
+
 // 云函数入口函数
 exports.main = async (event, context) => {
-  let conversationId = event.conversationId
-  let mailBox = await db.collection("Conversation").where({
-    id: conversationId
+  let nowId = await db.collection("System").where({
+    _id: "id"
   }).get()
-  if (mailBox.data.length == 0) {
-    return false
-  }
-  
-  return mailBox.data[0]
+  nowId = nowId.data[0]
+  userid = nowId.userid
+  return userid - 1
 }

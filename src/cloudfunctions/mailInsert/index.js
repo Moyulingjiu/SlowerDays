@@ -3,7 +3,7 @@ const cloud = require('wx-server-sdk')
 
 cloud.init()
 
-const db = cloud.data
+const db = cloud.database()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
@@ -61,7 +61,8 @@ exports.main = async (event, context) => {
         id: conversationId,
         mail: [],
         mailBox1: mailBox1.id,
-        mailBox2: mailBox2.id
+        mailBox2: mailBox2.id,
+        relationship: '过客'
       }
     })
     mailBox1.conversation.append(conversationId)

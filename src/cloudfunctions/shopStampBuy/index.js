@@ -57,16 +57,19 @@ exports.main = async (event, context) => {
     user.wallet -= data.stamp[i].price * number // 付钱
     data.stamp[i].volume += number // 销售量加一
 
+    delete warehouse._id
     await db.collection("WareHouse").where({
       id: id
     }).update({
       data: warehouse
     })
+    delete user._id
     await db.collection("User").where({
       id: id
     }).update({
       data: user
     })
+    delete data._id
     await db.collection("Shop").where({
       _id: "example"
     }).update({
