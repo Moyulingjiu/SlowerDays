@@ -1,0 +1,29 @@
+<view class="shop-container" >
+
+<view class="shop-info">
+  <image class="shop-image" mode="scaleToFill" src="cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/test/images/cloudstore/stamp2.jpg" style="width: 200rpx; height: 246rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx"></image>
+
+  <view class="shop-desc">
+    <text class="shop-main-text">春日盎然</text>
+    <text class="shop-text">春天的雨打开了万物的按钮</text>
+   
+  
+  </view>
+  <view class="button" slot="footer">
+  <van-button bindtap='goToTalkPage' round type="info" size="mini" color="linear-gradient(to right, #4bb0ff, #6149f6)" >
+  了解更多  
+  </van-button>
+</view>
+</view>
+
+</view>
+
+<view class="modal-box" hidden="{{flag}}" bindtap="hide">
+<van-popup
+  show="{{ show }}"
+  closeable
+  position="bottom"
+  custom-style="height: 20%"
+  bind:close="onClose"
+/>
+</view>
