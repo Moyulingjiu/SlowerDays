@@ -12,7 +12,7 @@ exports.main = async (event, context) => {
   let text = event.text
   let date = new Date()
 
-  let data = await db.collection("UserInfor").where({
+  let data = await db.collection("User").where({
     id: id
   }).get()
   data = data.data[0] //用户数据
@@ -30,6 +30,7 @@ exports.main = async (event, context) => {
   nowId = nowId.data[0]
   treeholeId = nowId.treeholeId
   nowId.treeholeId += 1
+  delete nowId._id
   await db.collection("System").where({
     _id: "id"
   }).update({
@@ -52,6 +53,7 @@ exports.main = async (event, context) => {
   }).get()
   contact = contact.data[0]
   contact.treeHole.push(treeholeId)
+  delete contact._id
   await db.collection("User_TreeHole").where({
     id: id
   }).update({

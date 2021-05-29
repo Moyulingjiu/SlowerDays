@@ -20,6 +20,7 @@ exports.main = async (event, context) => {
   nowId = nowId.data[0]
   themeId = nowId.themeId
   nowId.themeId += 1
+  delete nowId._id
   await db.collection("System").where({
     _id: "id"
   }).update({

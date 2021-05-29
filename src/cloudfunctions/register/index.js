@@ -31,6 +31,7 @@ exports.main = async (event, context) => {
   let id = nowId.userId
 
   nowId.userId = nowId.userId + 1
+  delete nowId._id
 
   await db.collection("System").where({
     _id: "id"
