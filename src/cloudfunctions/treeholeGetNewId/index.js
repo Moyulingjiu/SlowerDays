@@ -11,6 +11,6 @@ exports.main = async (event, context) => {
     _id: "id"
   }).get()
   nowId = nowId.data[0]
-  treeholeId = nowId.treeholeId
+  treeholeId = nowId.treeHoleId
   return treeholeId - 1
 }

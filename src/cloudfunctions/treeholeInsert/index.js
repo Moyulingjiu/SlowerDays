@@ -11,7 +11,6 @@ exports.main = async (event, context) => {
   let color = event.color
   let text = event.text
   let date = new Date()
-
   let data = await db.collection("User").where({
     id: id
   }).get()
@@ -28,16 +27,14 @@ exports.main = async (event, context) => {
     _id: "id"
   }).get()
   nowId = nowId.data[0]
-  treeholeId = nowId.treeholeId
-  nowId.treeholeId += 1
+  treeholeId = nowId.treeHoleId
+  nowId.treeHoleId += 1
   delete nowId._id
   await db.collection("System").where({
     _id: "id"
   }).update({
     data: nowId
   })
-
-  return true
 
   await db.collection("TreeHole").add({
     data: {
