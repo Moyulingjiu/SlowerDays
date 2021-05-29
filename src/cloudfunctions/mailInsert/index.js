@@ -67,11 +67,14 @@ exports.main = async (event, context) => {
     mailBox1.conversation.append(conversationId)
     mailBox2.conversation.append(conversationId)
   }
+  
+  delete mailBox1._id
   await db.collection("MailBox").where({
     id: form
   }).update({
     data: mailBox1
   })
+  delete mailBox2._id
   await db.collection("MailBox").where({
     id: to
   }).update({
@@ -79,6 +82,7 @@ exports.main = async (event, context) => {
   })
 
   // 保存id
+  delete data._id
   await db.collection("System").where({
     _id: "id"
   }).update({
@@ -91,6 +95,8 @@ exports.main = async (event, context) => {
   }).get()
   conversation = conversation.data[0]
   conversation.mail.append(mailId)
+  
+  delete conversation._id
   await db.collection("System").where({
     id: conversationId
   }).update({

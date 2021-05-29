@@ -9,7 +9,7 @@ const db = cloud.database()
 exports.main = async (event, context) => {
   let id = event.id
 
-  let data = await db.collection("UserInfor").where({
+  let data = await db.collection("User").where({
     id: id
   }).get()
   data = data.data[0]
