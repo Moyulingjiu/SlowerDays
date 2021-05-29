@@ -24,8 +24,8 @@ exports.main = async (event, context) => {
     _id: "id"
   }).get()
   nowId = nowId.data[0]
-  shopEnvelopeId = nowId.shopEnvelopeId
-  nowId.shopEnvelopeId += 1
+  mailId = nowId.mailId
+  nowId.mailId += 1
   await db.collection("System").where({
     _id: "id"
   }).update({
