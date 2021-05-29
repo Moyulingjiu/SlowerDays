@@ -6,12 +6,12 @@
     "pages/cloudstore/cloudstore",
     "pages/letterDetail/letterDetail",
     "pages/personalPage/personalPage",
-    "pages/envelopeDetail/envelopeDetail",
     "pages/myItems/myItems",
     "pages/myTreeHole/myTreeHole",
     "pages/treeHoleWrite/treeHoleWrite",
     "pages/sendConfirmationPage/sendConfirmationPage",
-    "pages/personalSettings/personalSettings"
+    "pages/personalSettings/personalSettings",
+    "pages/friendsPage/friendsPage"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

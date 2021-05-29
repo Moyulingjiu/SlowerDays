@@ -1,0 +1,26 @@
+<!--miniprogram/pages/friendsPage/friendsPage.wxml-->
+<scroll-view class="mainview" scroll-y="true">
+  <image src="cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/test/images/personalpage/5958bab6389cb7261c1b5f123b09dc8d0d710fd6.jpg@1320w_662h.webp" mode="aspectFill" style="width:750rpx;height:220px;position: absolute;"></image>
+  <view class="backimagemask"></view>
+  <view>
+    <van-image round width="80px"  height="80px" src="{{protrait}}" class="portrait"/>
+    <view class="username">{{nickname}}</view>
+    <!-- <view class="sex">女</view> -->
+    <view class="idnum">ID:{{id}}</view>
+    <van-tag plain type="success" class="tags">信誉优秀</van-tag>
+    <van-tag plain type="primary" class="tags">玻璃珠：{{wallet}}</van-tag>
+  </view>
+  <view class="signaturecard">
+    <view class="signaturetext">{{signature}}</view>
+    <!-- 46个字符 -->
+  </view>
+  <view class="celllist">
+    <view class="title">xxxx的成就</view>
+    <van-grid>
+      <van-grid-item icon="photo-o" text="文字" />
+      <van-grid-item icon="photo-o" text="文字" />
+      <van-grid-item icon="photo-o" text="文字" />
+      <van-grid-item icon="photo-o" text="文字" />
+    </van-grid>
+  </view>
+</scroll-view>

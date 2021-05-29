@@ -10,5 +10,5 @@
 <van-divider contentPosition="center" customStyle="color: orange; border-color: orange;" style="background:{{backgroundcolor}}">
   想在树洞中投入什么信息吗？
 </van-divider>
-<textarea class="letterContent" bindblur="bindTextAreaBlur" placeholder="在这里开始书写你想说的内容吧"  style="background:{{backgroundcolor}}"/>
+<textarea class="letterContent" placeholder="在这里开始书写你想说的内容吧" style="background:{{backgroundcolor}}" bindinput="inputtext" />
 <van-button round icon="success" type="default" class="notice" bindtap="sendContent"></van-button>

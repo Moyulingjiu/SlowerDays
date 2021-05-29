@@ -152,6 +152,12 @@ Page({
     }
   },
 
+  onFriendsPage(){
+    wx.redirectTo({
+      url: '../friendsPage/friendsPage',
+    })
+  },
+
   onWrite(){
     this.setData({ writeShow: true });
   },

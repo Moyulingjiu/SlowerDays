@@ -1,20 +1,38 @@
-// miniprogram/pages/treeHoleWrite/treeHoleWrite.js
-var app = getApp();
+// miniprogram/pages/friendsPage/friendsPage.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    backgroundcolor: "white",
-    text: ""
+    nickname: '',
+    sex: '',
+    signature: '',
+    protrait: '',
+    id: 0,
+    wallet: 0,
+    active: 2,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    wx.cloud.callFunction({
+      name: 'userGet',
+      data: {
+        id:app.globalData.id
+      }
+    }).then(function(e){
+      that.setData({
+        nickname: e.result.baseInformation.nickname,
+        sex: e.result.baseInformation.sex,
+        signature: e.result.baseInformation.signature,
+        protrait: e.result.baseInformation.protrait,
+        wallet: e.result.wallet
+      })
+    })
   },
 
   /**
@@ -64,40 +82,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-  changelettercolor(e){
-    this.setData({
-      backgroundcolor: e.currentTarget.dataset.color
-    })
-  },
-
-  inputtext(e){
-    this.setData({
-      text: e.detail.value
-    })
-  },
-
-  sendContent(){
-    var that = this
-    wx.cloud.callFunction({
-      name: 'treeholeInsert',
-      data:{
-        id: app.globalData.id,
-        color: that.data.backgroundcolor,
-        text: that.data.text
-      }
-    }).then(
-      wx.showToast({
-        title: '已投入树洞',
-        icon: 'success',
-        duration: 2000
-      }),
-      setTimeout(function () {
-        wx.reLaunch({
-          url: '../index/index',
-        })
-      }, 400)
-    )
   }
 })

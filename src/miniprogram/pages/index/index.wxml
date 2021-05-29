@@ -36,9 +36,9 @@
 </van-popup>
 
 <!-- 好友卡片 -->
-<view class="messagecard" bindtap="onLettersDetail" wx:for="{{2}}">
-  <van-image round width="60px"  height="60px" lazy-load src="{{portraitURL}}" class="portrait"/>
-  <text class="friendname">{{username}}</text>
+<view class="messagecard" wx:for="{{2}}" catchtap="onLettersDetail">
+  <van-image round width="60px"  height="60px" lazy-load src="{{portraitURL}}" class="portrait" catchtap="onFriendsPage"/>
+  <text class="friendname" catchtap="onFriendsPage">{{username}}</text>
   <van-tag round type="primary" class="relationship"  style="margin-left: {{frelationshipLength}};">笔友</van-tag>
   <text class="describe">你与伊蕾娜已传递了X封信</text>
   <van-tag plain type="success" class="infor">新的信件</van-tag>

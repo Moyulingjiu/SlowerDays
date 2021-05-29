@@ -31,7 +31,8 @@ Page({
         nickname: e.result.baseInformation.nickname,
         sex: e.result.baseInformation.sex,
         signature: e.result.baseInformation.signature,
-        protrait: e.result.baseInformation.protrait,
+        avatarUrl: e.result.baseInformation.protrait,
+        tel: e.result.baseInformation.tel
       })
     })
   },
@@ -116,14 +117,16 @@ Page({
   },
 
   onsubmit(){
+    var that = this
     wx.cloud.callFunction({
       name: 'userChangeBaseInformation',
       data: {
-        nickname: this.data.nickname,
-        protrait: this.data.avatarUrl,
-        sex: this.data.sex,
-        signature: this.data.signature,
-        tel: this.data.tel,
+        id:app.globalData.id,
+        nickname: that.data.nickname,
+        protrait: that.data.avatarUrl,
+        sex: that.data.sex,
+        signature: that.data.signature,
+        tel: that.data.tel,
         birthday: ''
       }
     }).then(
