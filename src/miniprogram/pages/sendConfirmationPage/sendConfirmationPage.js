@@ -1,11 +1,11 @@
-// miniprogram/pages/treeHoleWrite/treeHoleWrite.js
+// miniprogram/pages/sendConfirmationPage/sendConfirmationPage.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    backgroundcolor: "white"
+
   },
 
   /**
@@ -62,31 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-  changelettercolor(e){
-    this.setData({
-      backgroundcolor: e.currentTarget.dataset.color
-    })
-  },
-
-  sendContent(){
-    wx.cloud.callFunction({
-      name: 'treeholeInsert',
-      data:{
-        
-      }
-    }).then(
-      wx.showToast({
-        title: '已投入树洞',
-        icon: 'success',
-        duration: 2000
-      }),
-      setTimeout(function () {
-        wx.reLaunch({
-          url: '../index/index',
-        })
-      }, 400)
-    )
   }
 })

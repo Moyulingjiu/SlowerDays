@@ -1,1 +1,34 @@
 /* miniprogram/pages/register/register.wxss */
+page{
+  height: 100%;   
+  background-color: #fafafa;
+ }
+.login-container{
+  padding: 0 10%;
+  height: 100%;
+}
+.title{
+  font-size: large;
+  text-align: center;
+  padding-top: 10%;
+  font-weight: bold;
+}
+.login-box{
+  margin-top: 10%;
+  padding: 10% 5%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 4px #888888;
+}
+
+.protrait{
+  position: relative;
+  margin: 10px;
+  bottom: 20px;
+  left: 32%;
+}
+
+.wxgetUserProfile{
+  position: relative;
+  left: 54%;
+}

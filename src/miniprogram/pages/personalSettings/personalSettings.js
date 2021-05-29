@@ -1,4 +1,5 @@
-// miniprogram/pages/register/register.js
+// miniprogram/pages/personalSettings/personalSettings.js
+var app = getApp();
 Page({
 
   /**
@@ -15,19 +16,24 @@ Page({
     show: false,
   },
 
-  showPopup() {
-    this.setData({ show: true });
-  },
-
-  onClose() {
-    this.setData({ show: false });
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    wx.cloud.callFunction({
+      name: 'userGet',
+      data: {
+        id:app.globalData.id
+      }
+    }).then(function(e){
+      that.setData({
+        nickname: e.result.baseInformation.nickname,
+        sex: e.result.baseInformation.sex,
+        signature: e.result.baseInformation.signature,
+        protrait: e.result.baseInformation.protrait,
+      })
+    })
   },
 
   /**
@@ -109,30 +115,9 @@ Page({
     })
   },
 
-  wxgetUserProfile(){
-    wx.getUserProfile({
-      desc: '用于完善用户资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        console.log(res.userInfo)
-        if(res.userInfo.gender == 0){
-          var sex = '未知'
-        }else if(res.userInfo.gender == 1){
-          var sex = '男'
-        }else{
-          var sex = '女'
-        }
-        this.setData({
-          nickname: res.userInfo.nickName,
-          sex: sex,
-          avatarUrl: res.userInfo.avatarUrl
-        })
-      }
-    })
-  },
-
   onsubmit(){
     wx.cloud.callFunction({
-      name: 'register',
+      name: 'userChangeBaseInformation',
       data: {
         nickname: this.data.nickname,
         protrait: this.data.avatarUrl,
@@ -143,7 +128,7 @@ Page({
       }
     }).then(
       wx.showToast({
-        title: '注册成功',
+        title: '修改成功',
         icon: 'success',
         duration: 2000
       }),

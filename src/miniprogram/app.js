@@ -1,6 +1,11 @@
 //app.js
 App({
+  globalData: {
+    id: 0
+  },
+
   onLaunch: function () {
+    var that = this
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
@@ -12,8 +17,18 @@ App({
         // env: 'my-env-id',
         traceUser: true,
       })
+      wx.cloud.callFunction({
+        name: 'signIn'
+      }).then(function(data){
+        console.log(data)
+        if(!data.result){
+          wx.reLaunch({
+            url: '/pages/register/register',
+          })
+        }else{
+          that.globalData.id = data.result.id
+        }
+      })
     }
-
-    this.globalData = {}
   }
 })

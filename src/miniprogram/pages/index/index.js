@@ -26,15 +26,15 @@ Page({
     treeholeshow: false,
     taskShow: false
   },
-    /// 按钮触摸开始触发的事件
-    touchStart: function(e) {
-      this.touchStartTime = e.timeStamp
-    },
+  /// 按钮触摸开始触发的事件
+  touchStart: function(e) {
+    this.touchStartTime = e.timeStamp
+  },
   
-    /// 按钮触摸结束触发的事件
-    touchEnd: function(e) {
-      this.touchEndTime = e.timeStamp
-    },
+  /// 按钮触摸结束触发的事件
+  touchEnd: function(e) {
+    this.touchEndTime = e.timeStamp
+  },
     
   onChange(event) {
     // event.detail 的值为当前选中项的索引

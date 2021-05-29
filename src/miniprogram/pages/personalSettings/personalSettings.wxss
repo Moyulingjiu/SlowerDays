@@ -1,0 +1,17 @@
+/* miniprogram/pages/personalSettings/personalSettings.wxss */
+.title{
+  margin: 10px;
+  font-size: small;
+  color: gray;
+}
+
+.protrait{
+  position: relative;
+  margin: 30px;
+  bottom: 30px;
+  left: 500rpx;
+}
+
+.cell{
+  background-color: white;
+}

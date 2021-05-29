@@ -1,2 +1,20 @@
 <!--miniprogram/pages/register/register.wxml-->
-<text>miniprogram/pages/register/register.wxml</text>
+<view class="login-container">
+  <view class="title">欢迎来到SlowerDays</view>
+  <view class="login-box">
+    <van-cell-group>
+      <van-image round width="80" height="80" src="{{avatarUrl}}" class="protrait" />
+      <van-field label='用户名' value="{{ nickname }}" placeholder="请输入用户名" bind:change="onChange" data-cell="nickname" />
+      <van-cell title="性别" is-link value="{{sex}}" bindtap="changesex"/>
+      <van-button size="small" type="primary" bindtap="wxgetUserProfile" class="wxgetUserProfile">微信授权填充信息</van-button>
+      <van-field label='个性签名' value="{{ signature }}" placeholder="请输入内容" bind:change="onChange" data-cell="signature" />
+      <van-field label='电话' value="{{ tel }}" placeholder="请输入电话" bind:change="onChange" data-cell="tel" />
+      <van-button type="info" block bindtap="onsubmit">提交您的个人信息</van-button>
+    </van-cell-group>
+  </view>
+</view>
+<van-popup show="{{ show }}" bind:close="onClose" position="bottom">
+  <van-picker columns="{{ sexlist }}" show-toolbar
+  title="选择性别" bind:cancel="onClose"
+  bind:confirm="onConfirm"/>
+</van-popup>

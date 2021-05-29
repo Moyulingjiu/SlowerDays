@@ -107,10 +107,8 @@ Page({
        });
     }
     else if(event.detail == 3){
-      wx.showToast({
-        title: '发送成功',
-        icon: 'success',
-        duration: 2000
+      wx.reLaunch({
+        url: '../sendConfirmationPage/sendConfirmationPage',
       })
     }
   }

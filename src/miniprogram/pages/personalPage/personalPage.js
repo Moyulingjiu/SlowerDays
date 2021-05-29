@@ -1,12 +1,17 @@
 // miniprogram/pages/personalPage/personalPage.js
+var app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
+    nickname: '',
+    sex: '',
+    signature: '',
+    protrait: '',
+    id: 0,
+    wallet: 0,
     active: 2,
-    portraitURL: "cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/portrait/伊蕾娜头像.jpeg"
   },
 
   onChange(event) {
@@ -28,7 +33,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    wx.cloud.callFunction({
+      name: 'userGet',
+      data: {
+        id:app.globalData.id
+      }
+    }).then(function(e){
+      that.setData({
+        nickname: e.result.baseInformation.nickname,
+        sex: e.result.baseInformation.sex,
+        signature: e.result.baseInformation.signature,
+        protrait: e.result.baseInformation.protrait,
+        wallet: e.result.wallet
+      })
+    })
   },
 
   /**
@@ -78,5 +97,10 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  onsetting(){
+    wx.redirectTo({
+      url: '../personalSettings/personalSettings',
+    })
   }
 })
