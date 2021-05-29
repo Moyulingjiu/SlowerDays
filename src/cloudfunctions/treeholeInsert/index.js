@@ -37,6 +37,8 @@ exports.main = async (event, context) => {
     data: nowId
   })
 
+  return true
+
   await db.collection("TreeHole").add({
     data: {
       id: treeholeId,
