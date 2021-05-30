@@ -18,7 +18,7 @@ exports.main = async (event, context) => {
   isVailable = data.privacy.treeHole
 
   let like = {
-    numer: 1,
+    number: 0,
     user: []
   }
 

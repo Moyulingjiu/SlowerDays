@@ -26,15 +26,15 @@ exports.main = async (event, context) => {
     return false // 已经点过赞了
 
   contact.like.push(treeholeId)
-  data.like.number++
+  data.like.number += 1
   data.like.user.push(id)
 
-  // delete data._id
-  // await db.collection("TreeHole").where({ // 更新树洞本身
-  //   id: treeholeId
-  // }).update({
-  //   data: data
-  // })
+  delete data._id
+  await db.collection("TreeHole").where({ // 更新树洞本身
+    id: treeholeId
+  }).update({
+    data: data
+  })
 
   delete contact._id
   await db.collection("User_TreeHole_Like").where({ // 更新用户-点赞的联系
