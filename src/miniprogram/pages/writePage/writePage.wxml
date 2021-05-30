@@ -3,18 +3,15 @@
 <van-cell-group>
   <van-cell title="收件人" />
 </van-cell-group>
-<van-tag plain type="primary" class="nametag" bindtap="changeRecipient">{{recipient}}</van-tag>
+<van-tag plain type="primary" class="nametag" bindtap="onChangeRecipient">{{recipient}}</van-tag>
 
 <van-popup show="{{ recipientPageshow }}" bind:close="onClose" round>
   <view class="recipientPage">
     <text>更换收件人</text>
     <van-divider />
-    <van-tag plain type="success" class="newfriendtag" bindtap="changeRecipient">认识一个新朋友？</van-tag>
+    <van-tag plain type="success" class="newfriendtag" data-friend="new" bindtap="changeRecipient">认识一个新朋友？</van-tag>
     <van-cell-group class="friendList">
-      <van-cell title="晨曦氤氲"/>
-      <van-cell title="晨曦氤氲" />
-      <van-cell title="晨曦氤氲" />
-      <van-cell title="晨曦氤氲" />
+      <van-cell title="晨曦氤氲" data-friend="userid" bindtap="changeRecipient"/>
     </van-cell-group>
   </view>
 </van-popup>
@@ -23,7 +20,7 @@
   这次是什么精彩的想法呢
 </van-divider>
 <view class="mainview">
-  <textarea class="letterContent" bindblur="bindTextAreaBlur" placeholder="在这里开始书写你想说的内容吧" />
+  <textarea class="letterContent" placeholder="在这里开始书写你想说的内容吧" bindinput="inputtext" />
 </view>
 
 <van-popup show="{{ stampPageshow }}" bind:close="onClose" round>

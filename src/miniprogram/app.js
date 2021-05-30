@@ -20,7 +20,6 @@ App({
       wx.cloud.callFunction({
         name: 'signIn'
       }).then(function(data){
-        console.log(data)
         if(!data.result){
           wx.reLaunch({
             url: '/pages/register/register',

@@ -13,6 +13,10 @@ Page({
     tel: '',
     birthday: '',
     sexlist: ['男', '女', '未知'],
+    achievementChecked: true,
+    birthdayChecked: false,
+    penpalsChecked: false,
+    treeholeChecked: true,
     show: false,
   },
 
@@ -33,6 +37,19 @@ Page({
         signature: e.result.baseInformation.signature,
         avatarUrl: e.result.baseInformation.protrait,
         tel: e.result.baseInformation.tel
+      })
+      wx.cloud.callFunction({
+        name: 'userGetPrivacy',
+        data: {
+          id:app.globalData.id
+        }
+      }).then(function(event){
+        that.setData({
+          achievementChecked: event.result.privacy.achievement,
+          birthdayChecked: event.result.privacy.birthday,
+          penpalsChecked: event.result.privacy.friends,
+          treeholeChecked: event.result.privacy.treeHole,
+        })
       })
     })
   },
@@ -102,6 +119,27 @@ Page({
     }
   },
 
+  onCheck(detail) {
+    console.log(detail)
+    if(detail.currentTarget.dataset.switch == "achievementChecked"){
+      this.setData({
+        achievementChecked: detail.detail
+      })
+    }else if(detail.currentTarget.dataset.switch == "birthdayChecked"){
+      this.setData({
+        birthdayChecked: detail.detail
+      })
+    }else if(detail.currentTarget.dataset.switch == "penpalsChecked"){
+      this.setData({
+        penpalsChecked: detail.detail
+      })
+    }else if(detail.currentTarget.dataset.switch == "treeholeChecked"){
+      this.setData({
+        treeholeChecked: detail.detail
+      })
+    }
+  },
+
   changesex(){
     this.setData({
       show: true
@@ -130,16 +168,27 @@ Page({
         birthday: ''
       }
     }).then(
-      wx.showToast({
-        title: '修改成功',
-        icon: 'success',
-        duration: 2000
-      }),
-      setTimeout(function () {
-        wx.redirectTo({
-          url: '../index/index',
-        })
-      }, 1000)
+      wx.cloud.callFunction({
+        name: 'userChangePrivacy',
+        data: {
+          id:app.globalData.id,
+          achievement: that.data.achievementChecked,
+          birthday: that.data.birthdayChecked,
+          friends: that.data.penpalsChecked,
+          treeHole: that.data.treeholeChecked
+        }
+      }).then(
+        wx.showToast({
+          title: '修改成功',
+          icon: 'success',
+          duration: 2000
+        }),
+        setTimeout(function () {
+          wx.redirectTo({
+            url: '../index/index',
+          })
+        }, 1000)
+      )
     )
   }
 })

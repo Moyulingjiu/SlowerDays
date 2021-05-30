@@ -1,11 +1,28 @@
 // miniprogram/pages/writePage/writePage.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    friendlist: [],
     recipient: "一位有缘的陌生人",
+    text: '',
+    date: '',
+    arrivalTime: '',
+    form: '',
+    to: '',
+    state: '',
+    type: '',
+    accident: '',
+    envelope: '',
+    paper: '',
+    stamp: '',
+    giftEnvelope: '',
+    giftPaper: '',
+    giftStamp: '',
+    gift: '',
     recipientPageshow: false,
     stampPageshow: false,
     popupName: "None"
@@ -15,7 +32,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     if(options.isNew == "true"){
       this.setData({
         recipient: "一位有缘的陌生人",
@@ -25,6 +41,12 @@ Page({
         recipient: "点击选择收件人",
         })
     }
+    wx.cloud.callFunction({
+      name: 'mailboxGet',
+      data: {
+        id:app.globalData.id,
+      }
+    }).then(console.log)
   },
 
   /**
@@ -76,6 +98,12 @@ Page({
 
   },
 
+  inputtext(e){
+    this.setData({
+      text: e.detail.value
+    })
+  },
+
   onClose() {
     this.setData({ 
       recipientPageshow: false,
@@ -83,8 +111,12 @@ Page({
      });
   },
 
-  changeRecipient(){
+  onChangeRecipient(){
     this.setData({ recipientPageshow: true });
+  },
+
+  changeRecipient(e){
+    console.log(e)
   },
 
   changeStampPage(event){

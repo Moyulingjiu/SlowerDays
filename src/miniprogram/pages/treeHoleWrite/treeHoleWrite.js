@@ -88,16 +88,19 @@ Page({
         text: that.data.text
       }
     }).then(
-      wx.showToast({
-        title: '已投入树洞',
-        icon: 'success',
-        duration: 2000
-      }),
-      setTimeout(function () {
-        wx.reLaunch({
-          url: '../index/index',
-        })
-      }, 400)
+      function(e){
+        console.log(e)
+        wx.showToast({
+          title: '已投入树洞',
+          icon: 'success',
+          duration: 2000
+        }),
+        setTimeout(function () {
+          wx.reLaunch({
+            url: '../index/index',
+          })
+        }, 400)
+      }
     )
   }
 })

@@ -61,7 +61,7 @@ swiper image{
   padding: 8px;
   font-size:14px;
   overflow: hidden;
-  color: #006363;
+  /* color: #0eb1b1; */
 }
 
 .messagecard{

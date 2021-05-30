@@ -12,7 +12,7 @@
   desc="创作来源来自美丽的春天"
   title="春日信封"
   thumb="{{imageURL}}"
-  thumb-link="../envelope/detail.wxml"
+  thumb-link="../shopDetail/shopDetail"
 >
   <view slot="footer">
   <van-button bindtap='goToPage' round type="info" size="mini" color="linear-gradient(to right, #4bb0ff, #6149f6)" >

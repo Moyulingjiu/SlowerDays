@@ -6,8 +6,29 @@
   <van-cell title="性别" is-link value="{{sex}}" bindtap="changesex"/>
   <van-field label='个性签名' value="{{ signature }}" placeholder="请输入内容" bind:change="onChange" data-cell="signature" />
   <van-field label='电话' value="{{ tel }}" placeholder="请输入电话" bind:change="onChange" data-cell="tel" />
+  <van-cell title="是否展示成就">
+    <view slot="right-icon">
+      <van-switch checked="{{ achievementChecked }}" data-switch="achievementChecked" bind:change="onCheck" />
+    </view>
+  </van-cell>
+  <van-cell title="是否展示生日">
+    <view slot="right-icon">
+      <van-switch checked="{{ birthdayChecked }}" data-switch="birthdayChecked" bind:change="onCheck" />
+    </view>
+  </van-cell>
+  <van-cell title="是否展示笔友数量">
+    <view slot="right-icon">
+      <van-switch checked="{{ penpalsChecked }}" data-switch="penpalsChecked" bind:change="onCheck" />
+    </view>
+  </van-cell>
+  <van-cell title="是否将后续树洞投入首页">
+    <view slot="right-icon">
+      <van-switch checked="{{ treeholeChecked }}" data-switch="treeholeChecked" bind:change="onCheck" />
+    </view>
+  </van-cell>
   <van-button type="info" block bindtap="onsubmit">修改您的个人信息</van-button>
 </van-cell-group>
+
 <van-popup show="{{ show }}" bind:close="onClose" position="bottom">
   <van-picker columns="{{ sexlist }}" show-toolbar
   title="选择性别" bind:cancel="onClose"

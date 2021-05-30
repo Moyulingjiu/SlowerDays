@@ -1,4 +1,5 @@
 // miniprogram/pages/friendsPage/friendsPage.js
+var app = getApp();
 Page({
 
   /**

@@ -22,7 +22,7 @@
 <view class="treeholecard" style="background-color:{{treeHoleBackground}}" bindtap="onTreeHoleTap" bindtouchstart="touchStart" bindtouchend="touchEnd">
   <van-tag plain type="primary" class="infor">树洞</van-tag>
   <view class="treeholecontent" >
-    <text>我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方</text>
+    <text>{{treeHoleText}}</text>
   </view>
 </view>
 
@@ -30,7 +30,7 @@
 <van-popup show="{{ treeholeshow }}" bind:close="onClose" round custom-style="background-color:{{treeHoleBackground}}">
   <view class="detailletters">
     <view class="treeholecontent" >
-      <text>我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方</text>
+      <text>{{treeHoleText}}</text>
     </view>
   </view>
 </van-popup>
@@ -38,13 +38,23 @@
 <!-- 好友卡片 -->
 <view class="messagecard" wx:for="{{2}}" catchtap="onLettersDetail">
   <van-image round width="60px"  height="60px" lazy-load src="{{portraitURL}}" class="portrait" catchtap="onFriendsPage"/>
-  <text class="friendname" catchtap="onFriendsPage">{{username}}</text>
+  <text class="friendname" catchtap="onFriendsPage">{{friendname}}</text>
   <van-tag round type="primary" class="relationship"  style="margin-left: {{frelationshipLength}};">笔友</van-tag>
   <text class="describe">你与伊蕾娜已传递了X封信</text>
   <van-tag plain type="success" class="infor">新的信件</van-tag>
 </view>
 
 <!-- 好友卡片展开详细，信件列表 -->
+<van-popup show="{{ lettersdetailshow }}" bind:close="onClose" round>
+  <view class="detailletters">
+    <view bindtap="onLetterDetail">
+      <view class="lettertime">2021-5-15 夜煞寄给伊蕾娜的信</view>
+      <view class="lettercover"></view>
+    </view>
+  </view>
+</van-popup>
+
+<!-- 关系弹窗 -->
 <van-popup show="{{ lettersdetailshow }}" bind:close="onClose" round>
   <view class="detailletters">
     <view bindtap="onLetterDetail">

@@ -1,5 +1,6 @@
 // miniprogram/pages/index/index.js
 import Notify from '../miniprogram_npm/@vant/weapp/notify/notify';
+var app = getApp();
 Page({
 
   /**
@@ -9,14 +10,16 @@ Page({
     touchStartTime: 0,   // 触摸开始时间
     touchEndTime: 0,    // 触摸结束时间
     lastTapTime: 0,    // 最后一次单击事件点击发生时间
-    treeHoleBackground: "pink",
-    username: "伊蕾娜",
+    treeHoleBackground: "white",
+    treeHoleText: '',
+    treeHoleId: '',
+    friendname: "伊蕾娜",
+    portraitURL: "cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/portrait/伊蕾娜头像.jpeg",
     active: 0,
     transferStatusCardHeight: "100px",
     bottom1: "12%",
     bottom2: "12%",
     bottom3: "12%",
-    portraitURL: "cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/portrait/伊蕾娜头像.jpeg",
     isPlus: "plus",
     frelationshipLength: "20px",
     show: false,
@@ -75,8 +78,27 @@ Page({
   onLoad: function (options) {
     var that = this
     this.setData({
-      frelationshipLength: (that.data.username.length-1)*15+20 + "px",
+      frelationshipLength: (that.data.friendname.length-1)*15+20 + "px",
       // transferStatusCardHeight: 
+      })
+      wx.cloud.callFunction({
+        name: 'treeholeGetNewId'
+      }).then(function(e){
+        that.setData({
+          treeHoleId: Math.floor(Math.random() * e.result ) + 1,
+        })
+        wx.cloud.callFunction({
+          name: 'treeholeGet',
+          data:{
+            treeholeId: that.data.treeHoleId,
+            id:app.globalData.id
+          }
+        }).then(function(data){
+          that.setData({
+            treeHoleBackground: data.result.color,
+            treeHoleText: data.result.text
+          })
+        })
       })
   },
 
@@ -207,11 +229,20 @@ Page({
       if (currentTime - lastTapTime < 300) {
         // 成功触发双击事件时，取消单击事件的执行
         clearTimeout(that.lastTapTimeoutFunc);
-        Notify({
-          message: '树洞作者已收到你的喜欢❤',
-          color: '#ad0000',
-          background: '#ffe1e1',
-        });
+        wx.cloud.callFunction({
+          name: 'treeholeLike',
+          data:{
+            treeholeId: that.data.treeHoleId,
+            id:app.globalData.id
+          }
+        }) .then(function(e){
+          Notify({
+            message: '树洞作者已收到你的喜欢❤',
+            color: '#ad0000',
+            background: '#ffe1e1',
+          })
+        }
+        ) 
       } else {
         // 单击事件延时300毫秒执行，这和最初的浏览器的点击300ms延时有点像。
         that.lastTapTimeoutFunc = setTimeout(function () {
