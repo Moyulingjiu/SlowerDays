@@ -11,7 +11,7 @@ Page({
     text: '',
     date: '',
     arrivalTime: '',
-    form: app.globalData.id,
+    from: '',
     to: '',
     state: 0,
     type: '',
@@ -36,7 +36,8 @@ Page({
     if(options.isNew == "true"){
       this.setData({
         recipient: "一位有缘的陌生人",
-        type: 0
+        type: 0,
+        from: app.globalData.id
       })
       wx.cloud.callFunction({
         name: 'userGetNowId'
@@ -59,7 +60,8 @@ Page({
     }else{
       this.setData({
         recipient: "点击选择收件人",
-        type: 1
+        type: 1,
+        from: app.globalData.id
         })
     }
     wx.cloud.callFunction({
@@ -177,7 +179,7 @@ Page({
           text: that.data.text,
           date: that.data.date,
           arrivalTime: that.data.arrivalTime,
-          form: that.data.form,
+          from: that.data.from,
           to: that.data.to,
           state: that.data.state,
           type: that.data.type,
