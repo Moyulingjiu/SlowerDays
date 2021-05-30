@@ -12,5 +12,11 @@
   title="邮票"
   thumb="{{imageURL}}"
   thumb-link=""
-/>
+>
+<view slot="footer">
+  <van-button bindtap='goToPage' round type="info" size="mini" color="linear-gradient(to right, #4bb0ff, #6149f6)" >
+  了解更多  
+  </van-button>
+  </view>
+</van-card>
 </view>

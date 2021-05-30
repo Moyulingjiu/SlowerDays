@@ -15,7 +15,7 @@
   thumb-link="../envelope/detail.wxml"
 >
   <view slot="footer">
-  <van-button bindtap='goToTalkPage' round type="info" size="mini" color="linear-gradient(to right, #4bb0ff, #6149f6)" >
+  <van-button bindtap='goToPage' round type="info" size="mini" color="linear-gradient(to right, #4bb0ff, #6149f6)" >
   了解更多  
   </van-button>
   </view>

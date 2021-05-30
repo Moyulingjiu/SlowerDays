@@ -11,7 +11,8 @@
     "pages/treeHoleWrite/treeHoleWrite",
     "pages/sendConfirmationPage/sendConfirmationPage",
     "pages/personalSettings/personalSettings",
-    "pages/friendsPage/friendsPage"
+    "pages/friendsPage/friendsPage",
+    "pages/shopDetail/shopDetail"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

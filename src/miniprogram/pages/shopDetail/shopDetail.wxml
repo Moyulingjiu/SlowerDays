@@ -2,7 +2,7 @@
 
 
   <view class="photo">
-  <image class="shop-image"  src="cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/test/images/cloudstore/stamp2.jpg" style="position: relative; width: 200rpx; height: 246rpx; display: block; box-sizing: border-box; left: 2rpx; top: -36rpx"></image>
+  <image class="shop-image"  src="cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/test/images/stamps/邮票-秋.png" style="position: relative; width: 200rpx; height: 246rpx; display: block; box-sizing: border-box; left: 2rpx; top: -36rpx"></image>
 </view>
   <view class="shop-desc" style="width: 449rpx; height: 330rpx; display: flex; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
     <text class="shop-event-name">春日盎然</text>
