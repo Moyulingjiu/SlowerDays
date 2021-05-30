@@ -4,10 +4,10 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 50rpx 30rpx;
+  padding: 70rpx 30rpx;
   background: #ffffff;
   height: 100px;
-  margin:10px 20px;
+  margin:15px 10px;
   border-radius: 10px;
 }
 
@@ -21,7 +21,7 @@
 
 .shop-image {
   width: 200rpx;
-  height: 300rpx;
+  
   box-shadow: 0 0 10rpx #cdcdcd;
 }
 
@@ -34,7 +34,7 @@
   padding-left: 30rpx;
 }
 
-.shop-main-text {
+.shop-event-name {
   color: #1e1e1e;
   font-size: 35rpx;
 }
@@ -51,3 +51,8 @@
  
 }
 
+.price{
+  font-size: 30rpx;
+  color: #f55212;
+  
+}
