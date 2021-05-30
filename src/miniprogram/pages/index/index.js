@@ -78,9 +78,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // wx.cloud.callFunction({
-    //   name: 'userGetNowId'
-    // }).then(console.log)
     var that = this
     this.setData({
       frelationshipLength: (that.data.friendname.length-1)*15+20 + "px",
@@ -104,6 +101,12 @@ Page({
             treeHoleText: data.result.text
           })
         })
+        wx.cloud.callFunction({
+          name: 'userTaskGet',
+          data: {
+            id:app.globalData.id
+          }
+        }).then()
       })
   },
 

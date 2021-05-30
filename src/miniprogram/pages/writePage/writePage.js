@@ -32,11 +32,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
     if(options.isNew == "true"){
       this.setData({
         recipient: "一位有缘的陌生人",
         type: 0
-        })
+      })
+      wx.cloud.callFunction({
+        name: 'userGetNowId'
+      }).then(function(e){
+        var num = Math.floor(Math.random() * e.result ) + 1
+        if(num != app.globalData.id){
+          that.setData({
+            to: num
+          })
+        }else if(num != 1){
+          that.setData({
+            to: num-1
+          })
+        }else{
+          that.setData({
+            to: num+1
+          })
+        }
+      })
     }else{
       this.setData({
         recipient: "点击选择收件人",
