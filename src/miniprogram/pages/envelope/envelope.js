@@ -8,12 +8,23 @@ Page({
    * 组件的初始数据
    */
   data: {
-    imageURL:"cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/test/images/cloudstore/paper.jpg",
-    imageURL:"cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/test/images/cloudstore/sale1.jpg",
+    envelope: []
   },
-<<<<<<< Updated upstream
+
+  onLoad(){
+    var that = this
+    wx.cloud.callFunction({
+      name: 'shopGet'
+    }).then(function(e){
+      console.log(e.result.envelope)
+      that.setData({
+        envelope: e.result.envelope
+      })
+    })
+  },
+
   goToPage:function(param){
-    wx.switchTab({
+    wx.navigateTo({
       url: '../shopDetail/shopDetail',
     })
   },
@@ -27,12 +38,4 @@ Page({
 
    },
   
-=======
-  
-  goToTalkPage(){
-    wx.navigateTo({
-      url: '../shopDetail/shopDetail',
-    })
-  }
->>>>>>> Stashed changes
 })

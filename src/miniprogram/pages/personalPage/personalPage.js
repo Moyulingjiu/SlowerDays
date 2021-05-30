@@ -9,7 +9,7 @@ Page({
     sex: '',
     signature: '',
     protrait: '',
-    id: 0,
+    id: '',
     wallet: 0,
     active: 2,
   },
@@ -45,7 +45,8 @@ Page({
         sex: e.result.baseInformation.sex,
         signature: e.result.baseInformation.signature,
         protrait: e.result.baseInformation.protrait,
-        wallet: e.result.wallet
+        wallet: e.result.wallet,
+        id: app.globalData.id
       })
     })
   },

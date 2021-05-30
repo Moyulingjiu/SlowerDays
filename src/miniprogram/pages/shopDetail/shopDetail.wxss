@@ -1,58 +1,30 @@
-.shop-container {
-  /*border: 1px solid black;*/
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 70rpx 30rpx;
-  background: #ffffff;
-  height: 100px;
-  margin:15px 10px;
+.card{
+  position: absolute;
+  top: 210px;
   border-radius: 10px;
+  background: #ffffff;
+  height: 400px;
+  width: 670rpx;
+  margin:10px 20px;
 }
 
-.shop-info {
-  /*border: 1px solid red;*/
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
+.commodity{
+  position: absolute;
+  top: 10px;
+  margin: 20px;
+  font-size: larger;
 }
 
-.shop-image {
-  width: 200rpx;
-  
-  box-shadow: 0 0 10rpx #cdcdcd;
+.tag{
+  position: relative;
+  left: 92px;
+  top: 34px;
+  margin: 20px;
 }
 
-.shop-desc {
-  /*border: 1px solid yellow;*/
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding-left: 30rpx;
-}
-
-.shop-event-name {
-  color: #1e1e1e;
-  font-size: 35rpx;
-}
-
-.shop-text {
-  color: #8a8a8a;
-  font-size: 30rpx;
-}
-
-.button-area {
-  /*border: 1px solid blue;*/
-  display: flex;
-  flex-direction: row;
- 
-}
-
-.price{
-  font-size: 30rpx;
-  color: #f55212;
-  
+.describe{
+  position: relative;
+  top: 34px;
+  margin: 20px;
+  color: gray;
 }

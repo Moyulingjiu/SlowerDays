@@ -1,7 +1,9 @@
 <!--miniprogram/pages/sendConfirmationPage/sendConfirmationPage.wxml-->
 <view>
-  <view class="successIcon">成功标志</view>
-  <view>您已成功投递出新的信件，它会被信鸽带往一位新朋友的手中</view>
+  <view class="successIcon">
+    <van-icon name="success" color="white" size="50px" custom-class="icon"/>
+  </view>
+  <view class="describe">您已成功投递出新的信件，信鸽将携带它前往远方</view>
 </view>
 <!-- <view>
   <view>送信标志</view>

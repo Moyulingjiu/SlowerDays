@@ -1,17 +1,17 @@
 <!--miniprogram/pages/myTreeHole/myTreeHole.wxml-->
-<view class="treeholecard" style="background-color:{{treeHoleBackground}}" bindtap="onTreeHoleTap" wx:for="{{2}}">
-  <view class="time">2020/05/25</view>
-  <van-tag plain type="warning" class="favor">已收到X个❤</van-tag>
+<view class="treeholecard" style="background-color:{{item.color}}" data-index="{{index}}" bindtap="onTreeHoleTap" wx:for="{{treeholedata}}">
+  <view class="time">{{item.date}}</view>
+  <van-tag plain type="warning" class="favor">已收到{{item.like}}个❤</van-tag>
   <van-tag plain type="primary" class="infor">树洞</van-tag>
   <view class="treeholecontent" >
-    <text>我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方</text>
+    <text>{{item.text}}</text>
   </view>
 </view>
 
-<van-popup show="{{ treeholeshow }}" bind:close="onClose" round custom-style="background-color:{{treeHoleBackground}}">
+<van-popup show="{{ treeholeshow }}" bind:close="onClose" round custom-style="background-color:{{detaildata.color}}">
   <view class="detailletters">
     <view class="treeholecontent" >
-      <text>我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方我梦见了一只麋鹿，它前往了远方</text>
+      <text>{{detaildata.text}}</text>
     </view>
   </view>
 </van-popup>

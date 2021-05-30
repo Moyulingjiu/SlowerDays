@@ -1,30 +1,12 @@
-<view class="shop-container"  style="width: 708rpx; height: 374rpx; display: flex; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
-
-
-  <view class="photo">
-  <image class="shop-image"  src="cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/test/images/stamps/邮票-秋.png" style="position: relative; width: 200rpx; height: 246rpx; display: block; box-sizing: border-box; left: 2rpx; top: -36rpx"></image>
+<image src="cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/test/images/personalpage/5958bab6389cb7261c1b5f123b09dc8d0d710fd6.jpg@1320w_662h.webp" mode="aspectFill" style="width:750rpx;height:220px;position: absolute;"></image>
+<view class="card">
+  <view class="commodity">商品名称</view>
+  <van-tag plain type="success" class="tag">类型</van-tag>
+  <view class="describe">这是一大堆描述文字</view>
 </view>
-  <view class="shop-desc" style="width: 449rpx; height: 330rpx; display: flex; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
-    <text class="shop-event-name">春日盎然</text>
-    <text class="shop-text">阳春：春天的美称。唐朝诗人李白诗中就有“阳春召我以烟景”的诗句。芳春：因春天草木萌动，大地草绿如茵，繁花似锦，故而得名。</text>
-    <text class="price" style="position: relative; left: -174rpx; top: 40rpx">¥10.00</text>
-    
-    <view class="button" slot="footer">
-    <van-button bindtap='goToTalkPage' round type="info" size="mini" style="position: relative; left: 294rpx; top: -2rpx" color="linear-gradient(to right, #f55212,#fd4902)" >
-  购买  
-  </van-button>
-</view>
-  </view>
-
-
-
-</view>
-<view class="modal-box" hidden="{{flag}}" bindtap="hide">
-<van-popup
-  show="{{ show }}"
-  closeable
-  position="bottom"
-  custom-style="height: 20%"
-  bind:close="onClose"
+<van-submit-bar
+  price="{{ 3000 }}"
+  button-text="现在兑换"
+  bind:submit="onSubmit"
+  decimal-length="0"
 />
-</view>

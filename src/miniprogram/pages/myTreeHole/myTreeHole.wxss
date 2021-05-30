@@ -20,7 +20,6 @@ page{
   padding: 8px;
   font-size:14px;
   overflow: hidden;
-  color: #006363;
 }
 
 .time{
@@ -28,6 +27,7 @@ page{
   left: 32px;
   margin-top: 4px;
   font-size: small;
+  color: #666666;
 }
 
 .infor{

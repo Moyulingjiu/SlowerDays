@@ -39,7 +39,7 @@
 <view class="messagecard" wx:for="{{2}}" catchtap="onLettersDetail">
   <van-image round width="60px"  height="60px" lazy-load src="{{portraitURL}}" class="portrait" catchtap="onFriendsPage"/>
   <text class="friendname" catchtap="onFriendsPage">{{friendname}}</text>
-  <van-tag round type="primary" class="relationship"  style="margin-left: {{frelationshipLength}};">笔友</van-tag>
+  <van-tag round type="primary" class="relationship"  style="margin-left: {{frelationshipLength}};" catchtap="onrelationship">笔友</van-tag>
   <text class="describe">你与伊蕾娜已传递了X封信</text>
   <van-tag plain type="success" class="infor">新的信件</van-tag>
 </view>
@@ -55,12 +55,15 @@
 </van-popup>
 
 <!-- 关系弹窗 -->
-<van-popup show="{{ lettersdetailshow }}" bind:close="onClose" round>
+<van-popup show="{{ relationshipshow }}" bind:close="onClose" round>
   <view class="detailletters">
-    <view bindtap="onLetterDetail">
-      <view class="lettertime">2021-5-15 夜煞寄给伊蕾娜的信</view>
-      <view class="lettercover"></view>
-    </view>
+    <text>好友羁绊</text>
+    <van-divider />
+    <van-cell-group>
+      <van-cell title="过客" value="内容" label="描述信息"/>
+      <van-cell title="笔友" value="内容" label="描述信息"/>
+      <van-cell title="挚友" value="内容" label="描述信息"/>
+    </van-cell-group>
   </view>
 </van-popup>
 

@@ -11,17 +11,17 @@ Page({
     text: '',
     date: '',
     arrivalTime: '',
-    form: '',
+    form: app.globalData.id,
     to: '',
-    state: '',
+    state: 0,
     type: '',
     accident: '',
-    envelope: '',
-    paper: '',
-    stamp: '',
-    giftEnvelope: '',
-    giftPaper: '',
-    giftStamp: '',
+    envelope: 0,
+    paper: 0,
+    stamp: 0,
+    giftEnvelope: 0,
+    giftPaper: 0,
+    giftStamp: 0,
     gift: '',
     recipientPageshow: false,
     stampPageshow: false,
@@ -35,10 +35,12 @@ Page({
     if(options.isNew == "true"){
       this.setData({
         recipient: "一位有缘的陌生人",
+        type: 0
         })
     }else{
       this.setData({
         recipient: "点击选择收件人",
+        type: 1
         })
     }
     wx.cloud.callFunction({
@@ -120,6 +122,7 @@ Page({
   },
 
   changeStampPage(event){
+    var that = this
     if(event.detail == 0){
       this.setData({ 
         stampPageshow: true,
@@ -139,9 +142,38 @@ Page({
        });
     }
     else if(event.detail == 3){
-      wx.reLaunch({
-        url: '../sendConfirmationPage/sendConfirmationPage',
+      var d = new Date()
+      var date = d
+      d.setHours(d.getHours()+ Math.floor(Math.random() * 12 ) + 3)
+      that.setData({
+        date: date,
+        arrivalTime: d
       })
+      wx.cloud.callFunction({
+        name: 'userGetNowId'
+      }).then(console.log)
+      wx.cloud.callFunction({
+        name: 'mailInsert',
+        data: {
+          text: that.data.text,
+          date: that.data.date,
+          arrivalTime: that.data.arrivalTime,
+          form: that.data.form,
+          to: that.data.to,
+          state: that.data.state,
+          type: that.data.type,
+          accident: that.data.accident,
+          envelope: that.data.envelope,
+          paper: that.data.paper,
+          stamp: that.data.stamp,
+          giftEnvelope: that.data.giftEnvelope,
+          giftPaper: that.data.giftPaper,
+          giftStamp: that.data.giftStamp,
+          gift: that.data.gift,
+        }
+      }).then(wx.reLaunch({
+        url: '../sendConfirmationPage/sendConfirmationPage',
+      }))
     }
   }
 })

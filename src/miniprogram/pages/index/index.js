@@ -27,7 +27,8 @@ Page({
     lettersdetailshow: false,
     collapseMenuShow: false,
     treeholeshow: false,
-    taskShow: false
+    taskShow: false,
+    relationshipshow: false
   },
   /// 按钮触摸开始触发的事件
   touchStart: function(e) {
@@ -66,6 +67,7 @@ Page({
       show:false,
       collapseMenuShow: false,
       treeholeshow: false,
+      relationshipshow: false
     });
   },
   onClickHide() {
@@ -76,6 +78,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // wx.cloud.callFunction({
+    //   name: 'userGetNowId'
+    // }).then(console.log)
     var that = this
     this.setData({
       frelationshipLength: (that.data.friendname.length-1)*15+20 + "px",
@@ -100,34 +105,6 @@ Page({
           })
         })
       })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
   },
 
   /**
@@ -180,6 +157,10 @@ Page({
     })
   },
 
+  onrelationship(){
+    this.setData({ relationshipshow: true });
+  },
+
   onWrite(){
     this.setData({ writeShow: true });
   },
@@ -229,20 +210,18 @@ Page({
       if (currentTime - lastTapTime < 300) {
         // 成功触发双击事件时，取消单击事件的执行
         clearTimeout(that.lastTapTimeoutFunc);
+        Notify({
+          message: '树洞作者已收到你的喜欢❤',
+          color: '#ad0000',
+          background: '#ffe1e1',
+        })
         wx.cloud.callFunction({
           name: 'treeholeLike',
           data:{
             treeholeId: that.data.treeHoleId,
             id:app.globalData.id
           }
-        }) .then(function(e){
-          Notify({
-            message: '树洞作者已收到你的喜欢❤',
-            color: '#ad0000',
-            background: '#ffe1e1',
-          })
-        }
-        ) 
+        })
       } else {
         // 单击事件延时300毫秒执行，这和最初的浏览器的点击300ms延时有点像。
         that.lastTapTimeoutFunc = setTimeout(function () {

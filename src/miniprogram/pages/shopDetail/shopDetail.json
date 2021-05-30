@@ -1,7 +1,6 @@
 {
-  "component": true,
   "usingComponents": {
-    "van-button": "@vant/weapp/button/index",
-    "van-popup": "@vant/weapp/popup/index"
+    "van-tag": "@vant/weapp/tag/index",
+    "van-submit-bar": "@vant/weapp/submit-bar/index"
   }
 }

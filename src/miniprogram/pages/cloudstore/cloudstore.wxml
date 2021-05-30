@@ -24,7 +24,7 @@
     <van-grid column-num="2" clickable="true" square="true"  >
 
     <view class="writeTools">
-    <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="../envelope/envelope">
+    <van-grid-item  use-slot url="../envelope/envelope">
       <!-- <text >信封样图
     </text> -->
     
@@ -36,7 +36,7 @@
       <view class="child">信封</view>
       </van-grid-item>
       
-    <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="../paper/paper">
+    <van-grid-item  use-slot url="../paper/paper">
       <image class="picture"
         style="width: 100%; height: 100%;"
         src="cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/test/images/cloudstore/sale1.jpg" 
@@ -44,7 +44,7 @@
       <view class="child">信纸</view>
     </van-grid-item>
     
-  <van-grid-item use-slot wx:for="{{ 1 }}" wx:for-item="index" url="../stamps/stamps">
+  <van-grid-item use-slot url="../stamps/stamps">
   <!-- <text >邮票样图
   </text> -->
     <image class="picture"
@@ -54,7 +54,7 @@
    
     <view class="child">邮票</view>
     </van-grid-item>
-    <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="../login/login">
+    <van-grid-item  use-slot url="../login/login">
       
     <!-- <image
         style="width: 100%; height: 100%;"
@@ -74,20 +74,20 @@
     </van-cell-group>
     <van-grid column-num="2" clickable="true" square="true" >
 <view class="writeTools">
-    <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
+    <van-grid-item  use-slot url="">
       <image
         style="width: 100%; height: 100%;"
         src="cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/test/images/cloudstore/gift1.jpg" 
       />
     </van-grid-item>
 
-    <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
+    <van-grid-item  use-slot>
       <image class="picture"
         style="width: 100%; height: 100%;"
         src="cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/test/images/cloudstore/gift2.jpg"
       />
     </van-grid-item>
-    <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
+    <van-grid-item  use-slot>
       <text class="child">
         伴手礼1
       </text>
@@ -96,7 +96,7 @@
         src="../images/cloudstore/sale3.jpg"
       /> -->
     </van-grid-item>
-    <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
+    <van-grid-item  use-slot>
       <text class="child">
         伴手礼2
       </text>
@@ -114,16 +114,16 @@
   <van-tab title="热门推荐">
     <van-grid column-num="2" clickable="true" square="true" use-slot="true" center="true" >
       <view class="writeTools">
-    <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
+    <van-grid-item  use-slot>
       <text class="child" >信封热门第一
     </text>
     </van-grid-item>
-    <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
+    <van-grid-item  use-slot>
     <text  class="child">信封热门第二
     </text>
     </van-grid-item>
 
-    <van-grid-item  use-slot wx:for="{{ 1 }}" wx:for-item="index" url="">
+    <van-grid-item  use-slot>
     <text  class="child">信封热门第三
     </text>
     </van-grid-item>
