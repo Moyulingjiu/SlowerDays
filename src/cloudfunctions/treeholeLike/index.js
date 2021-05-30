@@ -25,20 +25,24 @@ exports.main = async (event, context) => {
   if (index != -1)
     return false // 已经点过赞了
 
-  contact.like.append(treeholeId)
+  contact.like.push(treeholeId)
   data.like.number++
-  data.like.user.append(id)
-  
-  await db.collection("TreeHole").where({ // 更新树洞本身
-    id: treeholeId
-  }).update({
-    data: data
-  })
+  data.like.user.push(id)
+
+  // delete data._id
+  // await db.collection("TreeHole").where({ // 更新树洞本身
+  //   id: treeholeId
+  // }).update({
+  //   data: data
+  // })
+
+  delete contact._id
   await db.collection("User_TreeHole_Like").where({ // 更新用户-点赞的联系
-    id: treeholeId
+    id: id
   }).update({
     data: contact
   })
 
   return true
+  
 }

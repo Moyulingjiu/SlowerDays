@@ -65,8 +65,8 @@ exports.main = async (event, context) => {
         relationship: '过客'
       }
     })
-    mailBox1.conversation.append(conversationId)
-    mailBox2.conversation.append(conversationId)
+    mailBox1.conversation.push(conversationId)
+    mailBox2.conversation.push(conversationId)
   }
   
   delete mailBox1._id
@@ -95,7 +95,7 @@ exports.main = async (event, context) => {
     id: conversationId
   }).get()
   conversation = conversation.data[0]
-  conversation.mail.append(mailId)
+  conversation.mail.push(mailId)
   
   delete conversation._id
   await db.collection("System").where({
