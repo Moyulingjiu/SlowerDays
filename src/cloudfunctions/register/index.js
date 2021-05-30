@@ -20,6 +20,7 @@ exports.main = async (event, context) => {
     month: event.month,
     day: event.day
   } // 生日
+  let place = event.place
 
   // ==========================================
   // 分配id
@@ -51,7 +52,8 @@ exports.main = async (event, context) => {
         sex: sex,
         signature: signature,
         tel: tel,
-        birthday: birthday
+        birthday: birthday,
+        place: place
       },
       achievement: {
         task: {

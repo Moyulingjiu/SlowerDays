@@ -11,7 +11,7 @@ exports.main = async (event, context) => {
 
   let date = event.date // 寄出时间
   let arrivalTime = event.arrivalTime // 到达时间
-  let form = event.form // 寄件人
+  let from = event.from // 寄件人
   let to = event.to // 收件人
   let state = event.state // 信件状态（0：未送达，1：已送达，2：已回复）
   let type = event.type // 信件类型（0：新人信件，1：普通信件，2：建立关系，3：诀别信）
@@ -35,7 +35,7 @@ exports.main = async (event, context) => {
   nowId.mailId += 1
 
   let mailBox1 = await db.collection("MailBox").where({
-    id: form
+    id: from
   }).get()
   mailBox1 = mailBox1.data[0]
   let mailBox2 = await db.collection("MailBox").where({
@@ -71,7 +71,7 @@ exports.main = async (event, context) => {
   
   delete mailBox1._id
   await db.collection("MailBox").where({
-    id: form
+    id: from
   }).update({
     data: mailBox1
   })
@@ -83,7 +83,7 @@ exports.main = async (event, context) => {
   })
 
   // 保存id
-  delete data._id
+  delete nowId._id
   await db.collection("System").where({
     _id: "id"
   }).update({
@@ -130,5 +130,20 @@ exports.main = async (event, context) => {
       }
     }
   })
+
+  await db.collection("User").where({
+    id: from
+  }).update({
+    data: {
+      achievement: {
+        task: {
+          writeLetter: {
+              lastDate: new Date()
+          }
+        }
+      }
+    }
+  })
+
   return true
 }

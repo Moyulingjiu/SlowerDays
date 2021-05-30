@@ -7,10 +7,15 @@ const db = cloud.database()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  let nowId = await db.collection("System").where({
-    _id: "id"
+  let id = event.id
+
+  let data = await db.collection("User").where({
+    id: id
   }).get()
-  nowId = nowId.data[0]
-  userId = nowId.userId
-  return userId - 1
+  data = data.data[0]
+
+  return {
+    id: data.id,
+    task: data.achievement.task
+  }
 }

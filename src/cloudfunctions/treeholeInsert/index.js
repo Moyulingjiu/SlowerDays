@@ -58,6 +58,20 @@ exports.main = async (event, context) => {
   }).update({
     data: contact
   })
+  
+  await db.collection("User").where({
+    id: id
+  }).update({
+    data: {
+      achievement: {
+        task: {
+          writeTreeHole: {
+            lastDate: new Date()
+          }
+        }
+      }
+    }
+  })
 
   return true
 }
