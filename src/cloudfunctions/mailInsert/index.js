@@ -38,6 +38,7 @@ exports.main = async (event, context) => {
     id: from
   }).get()
   mailBox1 = mailBox1.data[0]
+  
   let mailBox2 = await db.collection("MailBox").where({
     id: to
   }).get()
@@ -46,6 +47,7 @@ exports.main = async (event, context) => {
   let len1 = mailBox1.conversation.length
   let len2 = mailBox2.conversation.length
   let conversationId = -1
+  
   for (var i = 0; i < len1; i++) {
     for (var j = 0; j < len2; j++) {
       if (mailBox1.conversation[i] == mailBox2.conversation[j]) {
@@ -53,6 +55,7 @@ exports.main = async (event, context) => {
       }
     }
   }
+
   if (conversationId == -1) {
     conversationId = nowId.conversationId
     nowId.conversationId += 1
