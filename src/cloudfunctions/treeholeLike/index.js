@@ -43,6 +43,42 @@ exports.main = async (event, context) => {
     data: contact
   })
 
+  
+  let user = await db.collection("User").where({
+    id: id
+  }).get()
+  user = user.data[0]
+  likeTreehole = user.achievement.task.likeTreehole
+  d = new Date()
+  let year1 = likeTreehole.lastDate.getFullYear()
+  let month1 = likeTreehole.lastDate.getMonth()
+  let day1 = likeTreehole.lastDate.getDate()
+
+  let year2 = d.lastDate.getFullYear()
+  let month2 = d.lastDate.getMonth()
+  let day2 = d.lastDate.getDate()
+
+  if (year1 == year2 && month1 == month2 && day1 == day2) {
+    likeTreehole.number += 1
+  } else {
+    likeTreehole.number = 0
+  }
+
+  await db.collection("User").where({
+    id: id
+  }).update({
+    data: {
+      achievement: {
+        task: {
+          likeTreehole: {
+            lastDate: d,
+            number: likeTreehole.number
+          }
+        }
+      }
+    }
+  })
+
   return true
   
 }
