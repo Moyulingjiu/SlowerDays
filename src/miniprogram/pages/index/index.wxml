@@ -36,11 +36,20 @@
 </van-popup>
 
 <!-- 好友卡片 -->
-<view class="messagecard" wx:for="{{2}}" catchtap="onLettersDetail">
-  <van-image round width="60px"  height="60px" lazy-load src="{{portraitURL}}" class="portrait" catchtap="onFriendsPage"/>
-  <text class="friendname" catchtap="onFriendsPage">{{friendname}}</text>
-  <van-tag round type="primary" class="relationship"  style="margin-left: {{frelationshipLength}};" catchtap="onrelationship">笔友</van-tag>
-  <text class="describe">你与伊蕾娜已传递了X封信</text>
+<view class="messagecard" wx:for="{{friendname}}" catchtap="onLettersDetail" data-friendname="{{friendname[index]}}">
+  <van-image round width="60px"  height="60px" lazy-load src="{{portraitURL[index]}}" class="portrait" catchtap="onFriendsPage"/>
+  <text class="friendname" catchtap="onFriendsPage">{{friendname[index]}}</text>
+  <van-tag round type="primary" class="relationship"  style="margin-left: {{frelationshipLength[index]}};" catchtap="onrelationship">{{relationship[index]}}</van-tag>
+  <text class="describe">你与{{friendname[index]}}已传递了{{letternum[index]}}封信</text>
+  <van-tag plain type="success" class="infor">新的信件</van-tag>
+</view>
+
+<!-- 示例卡片 -->
+<view class="messagecard" wx:for="{{1}}" catchtap="onLettersDetail" data-friendname="{{friendname[index]}}">
+  <van-image round width="60px"  height="60px" lazy-load src="cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/portrait/伊蕾娜头像.jpeg" class="portrait" catchtap="onFriendsPage"/>
+  <text class="friendname" catchtap="onFriendsPage">伊蕾娜</text>
+  <van-tag round type="primary" class="relationship"  style="margin-left: 50px;" catchtap="onrelationship">笔友</van-tag>
+  <text class="describe">你与伊蕾娜已传递了4封信</text>
   <van-tag plain type="success" class="infor">新的信件</van-tag>
 </view>
 
@@ -48,7 +57,7 @@
 <van-popup show="{{ lettersdetailshow }}" bind:close="onClose" round>
   <view class="detailletters">
     <view bindtap="onLetterDetail">
-      <view class="lettertime">2021-5-15 夜煞寄给伊蕾娜的信</view>
+      <view class="lettertime">2021-5-15 {{friendDetailsName}}寄给{{nickname}}的信</view>
       <view class="lettercover"></view>
     </view>
   </view>

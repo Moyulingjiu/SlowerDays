@@ -9,8 +9,16 @@
     <view class="username">{{nickname}}</view>
     <!-- <view class="sex">女</view> -->
     <view class="idnum">ID:{{id}}</view>
-    <van-tag plain type="success" class="tags">信誉优秀</van-tag>
-    <van-tag plain type="primary" class="tags">玻璃珠：{{wallet}}</van-tag>
+    <view wx:if="{{credit==0}}">
+      <van-tag plain type="success" class="tags">信誉优秀</van-tag>
+    </view>
+    <view wx:elif="{{credit==1}}">
+      <van-tag plain type="warning" class="tags">信誉一般</van-tag>
+    </view>
+    <view wx:else="{{credit==2}}">
+      <van-tag plain type="danger" class="tags">信誉极差</van-tag>
+    </view>
+    <van-tag plain type="primary" class="tags2">玻璃珠：{{wallet}}</van-tag>
   </view>
   <view class="signaturecard">
     <view class="signaturetext">{{signature}}</view>

@@ -6,6 +6,7 @@ Page({
    */
   data: {
     active: 1,
+    gift:[]
   },
   onChange(event) {
     // event.detail 的值为当前选中项的索引
@@ -25,6 +26,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
+    wx.cloud.callFunction({
+      name: 'shopGet'
+    }).then(function(e){
+      console.log(e.result)
+      that.setData({
+        gift: e.result.gift
+      })
+    })
   },
 
   /**
@@ -74,6 +84,12 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  goToPage:function(param){
+    wx.navigateTo({
+      url: '../shopDetail/shopDetail?type='+param.currentTarget.dataset.type+"&index="+param.currentTarget.dataset.index,
+    })
   },
 
 })

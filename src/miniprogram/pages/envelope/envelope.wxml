@@ -5,12 +5,11 @@
 </van-cell-group>
 </view>
 
-<view wx:for="{{envelope}}" style="background: #ffffff;">
+<view wx:for="{{envelope}}" style="background: #ffffff;" bindtap='goToPage' data-type="envelope" data-index="{{index}}">
 <!--内容信封展示-->
-  <van-card price="{{item.price}}弹珠" desc="{{item.comments}}" title="信封" thumb="{{item.place}}" thumb-link="../shopDetail/shopDetail"
-  >
+  <van-card price="{{item.price}}弹珠" desc="{{item.comments}}" title="{{item.title}}" thumb="{{item.place}}">
     <view slot="footer">
-    <van-button bindtap='goToPage' round type="info" size="mini" color="linear-gradient(to right, #4bb0ff, #6149f6)" >
+    <van-button round type="info" size="mini" color="linear-gradient(to right, #4bb0ff, #6149f6)" >
     了解更多
     </van-button>
     </view>

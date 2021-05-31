@@ -1,12 +1,18 @@
-<image src="cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/test/images/personalpage/5958bab6389cb7261c1b5f123b09dc8d0d710fd6.jpg@1320w_662h.webp" mode="aspectFill" style="width:750rpx;height:220px;position: absolute;"></image>
+<image src="{{all.place}}" mode="aspectFill" style="width:750rpx;height:220px;position: absolute;"></image>
 <view class="card">
-  <view class="commodity">商品名称</view>
-  <van-tag plain type="success" class="tag">类型</van-tag>
-  <view class="describe">这是一大堆描述文字</view>
+  <view class="commodity" wx:if="{{type != 'gift'}}"> {{all.title}} </view>
+  <view class="commodity" wx:if="{{type == 'gift'}}"> {{all.name}} </view>
+  <!-- <van-tag plain type="success" class="tag">{{type}}</van-tag> -->
+  <view class="describe">{{all.comments}}</view>
 </view>
-<van-submit-bar
-  price="{{ 3000 }}"
+<van-submit-bar wx:if="{{type == 'gift'}}" disabled
+  price="{{ all.price }}"
+  button-text="仅供查看"
+  decimal-length="0"
+/>
+<van-submit-bar wx:if="{{type != 'gift'}}"
+  price="{{ all.price * 100 }}"
   button-text="现在兑换"
-  bind:submit="onSubmit"
+  bindtap="onBuy"
   decimal-length="0"
 />

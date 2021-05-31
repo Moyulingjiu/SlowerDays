@@ -4,19 +4,13 @@
 </van-cell-group>
 </view>
 
-<view class="show">
+<view wx:for="{{stamp}}" style="background: #ffffff;" data-type="stamp" bindtap='goToPage' data-index="{{index}}">
 <!--内容信封展示-->
-<van-card
-  price="10.00"
-  desc="创作源泉来自美好的生活"
-  title="邮票"
-  thumb="{{imageURL}}"
-  thumb-link=""
->
-<view slot="footer">
-  <van-button bindtap='goToPage' round type="info" size="mini" color="linear-gradient(to right, #4bb0ff, #6149f6)" >
-  了解更多  
-  </van-button>
-  </view>
-</van-card>
+  <van-card price="{{item.price}}弹珠" desc="{{item.comments}}" title="{{item.title}}" thumb="{{item.place}}">
+    <view slot="footer">
+    <van-button round type="info" size="mini" color="linear-gradient(to right, #4bb0ff, #6149f6)" >
+    了解更多
+    </van-button>
+    </view>
+  </van-card>
 </view>

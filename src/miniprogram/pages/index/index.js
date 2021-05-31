@@ -13,15 +13,17 @@ Page({
     treeHoleBackground: "white",
     treeHoleText: '',
     treeHoleId: '',
-    friendname: "伊蕾娜",
-    portraitURL: "cloud://cloud1-9g6mp0559beaec2a.636c-cloud1-9g6mp0559beaec2a-1305792439/portrait/伊蕾娜头像.jpeg",
+    friendname: [],
+    relationship: [],
+    portraitURL: [],
+    letternum: [],
     active: 0,
     transferStatusCardHeight: "100px",
     bottom1: "12%",
     bottom2: "12%",
     bottom3: "12%",
     isPlus: "plus",
-    frelationshipLength: "20px",
+    frelationshipLength: [],
     show: false,
     writeShow: false,
     lettersdetailshow: false,
@@ -54,8 +56,11 @@ Page({
       })
     }
   },
-  onLettersDetail(){
-    this.setData({ lettersdetailshow: true });
+  onLettersDetail(e){
+    this.setData({ 
+      lettersdetailshow: true,
+      friendDetailsName: e.currentTarget.dataset.friendname
+     });
   },
   onClose() {
     this.setData({ 
@@ -75,39 +80,89 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面加载
+   * 生命周期函数--监听页面显示
    */
-  onLoad: function (options) {
+  onShow: function () {
     var that = this
-    this.setData({
-      frelationshipLength: (that.data.friendname.length-1)*15+20 + "px",
-      // transferStatusCardHeight: 
+    wx.cloud.callFunction({
+      name: 'treeholeGetNewId'
+    }).then(function(e){
+      that.setData({
+        treeHoleId: Math.floor(Math.random() * e.result ) + 1,
       })
       wx.cloud.callFunction({
-        name: 'treeholeGetNewId'
-      }).then(function(e){
+        name: 'treeholeGet',
+        data:{
+          treeholeId: that.data.treeHoleId,
+          id: app.globalData.id
+        }
+      }).then(function(data){
         that.setData({
-          treeHoleId: Math.floor(Math.random() * e.result ) + 1,
+          treeHoleBackground: data.result.color,
+          treeHoleText: data.result.text
         })
+      })
+    })
+    wx.cloud.callFunction({
+      name: 'mailboxGet',
+      data:{
+        id: app.globalData.id
+      }
+    }).then(function(e){
+      for (const key in e.result.conversation) {
         wx.cloud.callFunction({
-          name: 'treeholeGet',
+          name: 'conversationGet',
           data:{
-            treeholeId: that.data.treeHoleId,
-            id:app.globalData.id
+            conversationId: e.result.conversation[key]
           }
-        }).then(function(data){
+        }).then(function(e){
+          console.log(e)
+          var letternum = that.data.letternum
+          letternum.push(e.result.mail.length)
+          var relationship = that.data.relationship
+          relationship.push(e.result.relationship)
           that.setData({
-            treeHoleBackground: data.result.color,
-            treeHoleText: data.result.text
+            relationship: relationship,
+            letternum: letternum
+          })
+          wx.cloud.callFunction({
+            name: 'userGet',
+            data: {
+              id: e.result.id
+            }
+          }).then(function(e){
+            var friendname = that.data.friendname
+            var portraitURL = that.data.portraitURL
+            var frelationshipLength = that.data.frelationshipLength
+            friendname.push(e.result.baseInformation.nickname)
+            portraitURL.push(e.result.baseInformation.protrait)
+            frelationshipLength.push((e.result.baseInformation.nickname.length-1)*18+12+"px")
+            that.setData({
+              friendname: friendname,
+              portraitURL: portraitURL,
+              frelationshipLength: frelationshipLength,
+            })
           })
         })
-        wx.cloud.callFunction({
-          name: 'userTaskGet',
-          data: {
-            id:app.globalData.id
-          }
-        }).then()
+      }
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    var that = this
+    wx.cloud.callFunction({
+      name: 'userGet',
+      data: {
+        id:app.globalData.id
+      }
+    }).then(function(e){
+      that.setData({
+        nickname: e.result.baseInformation.nickname,
       })
+    })
   },
 
   /**
@@ -162,6 +217,12 @@ Page({
 
   onrelationship(){
     this.setData({ relationshipshow: true });
+    wx.cloud.callFunction({
+      name: 'userTaskGet',
+      data: {
+        id:app.globalData.id
+      }
+    }).then(console.log)
   },
 
   onWrite(){
@@ -170,6 +231,12 @@ Page({
 
   onTask(){
     this.setData({ taskShow: true });
+    wx.cloud.callFunction({
+      name: 'userTaskGet',
+      data: {
+        id:app.globalData.id
+      }
+    }).then(console.log)
   },
 
   onTreeHoleWrite(){

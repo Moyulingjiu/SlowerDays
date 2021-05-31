@@ -25,7 +25,7 @@ Page({
 
   goToPage:function(param){
     wx.navigateTo({
-      url: '../shopDetail/shopDetail',
+      url: '../shopDetail/shopDetail?type='+param.currentTarget.dataset.type+"&index="+param.currentTarget.dataset.index,
     })
   },
 

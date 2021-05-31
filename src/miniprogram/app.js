@@ -1,7 +1,7 @@
 //app.js
 App({
   globalData: {
-    id: 0
+    id: ''
   },
 
   onLaunch: function () {
@@ -20,12 +20,15 @@ App({
       wx.cloud.callFunction({
         name: 'signIn'
       }).then(function(data){
-        if(!data.result){
+        if(data.result){
+          that.globalData.id = data.result.id
+          wx.reLaunch({
+            url: '/pages/index/index',
+          })
+        }else{
           wx.reLaunch({
             url: '/pages/register/register',
           })
-        }else{
-          that.globalData.id = data.result.id
         }
       })
     }

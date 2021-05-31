@@ -27,11 +27,18 @@ page{
 
 .friendList{
   position:absolute;
+  width: 400rpx;
   top: 60px;
+  z-index: 0;
 }
 
 .newfriendtag{
   position:absolute;
   top: 64px;
   right: 12px;
+}
+
+.relationship{
+  position: absolute;
+  top: 9px;
 }

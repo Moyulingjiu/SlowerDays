@@ -6,8 +6,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    friendlist: [],
     recipient: "一位有缘的陌生人",
+    friendname: [],
+    frelationshipLength: [],
+    relationship: [],
+    userid:[],
     text: '',
     date: '',
     arrivalTime: '',
@@ -76,7 +79,46 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    var that = this
+    wx.cloud.callFunction({
+      name: 'mailboxGet',
+      data:{
+        id: app.globalData.id
+      }
+    }).then(function(e){
+      for (const key in e.result.conversation) {
+        wx.cloud.callFunction({
+          name: 'conversationGet',
+          data:{
+            conversationId: e.result.conversation[key]
+          }
+        }).then(function(e){
+          var userid = that.data.userid
+          userid.push(e.result.userid)
+          var relationship = that.data.relationship
+          relationship.push(e.result.relationship)
+          that.setData({
+            relationship: relationship,
+            userid: userid
+          })
+          wx.cloud.callFunction({
+            name: 'userGet',
+            data: {
+              id: e.result.id
+            }
+          }).then(function(e){
+            var friendname = that.data.friendname
+            var frelationshipLength = that.data.frelationshipLength
+            friendname.push(e.result.baseInformation.nickname)
+            frelationshipLength.push((e.result.baseInformation.nickname.length-1)*9+10+"px")
+            that.setData({
+              friendname: friendname,
+              frelationshipLength: frelationshipLength,
+            })
+          })
+        })
+      }
+    })
   },
 
   /**
@@ -140,6 +182,14 @@ Page({
 
   changeRecipient(e){
     console.log(e)
+    if(e.currentTarget.dataset.friend == "new"){
+      this.setData({
+        recipient: "一位有缘的陌生人",
+        type: 0,
+        from: app.globalData.id,
+        recipientPageshow: false
+      })
+    }
   },
 
   changeStampPage(event){

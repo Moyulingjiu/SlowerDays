@@ -11,7 +11,14 @@
     <van-divider />
     <van-tag plain type="success" class="newfriendtag" data-friend="new" bindtap="changeRecipient">认识一个新朋友？</van-tag>
     <van-cell-group class="friendList">
-      <van-cell title="晨曦氤氲" data-friend="userid" bindtap="changeRecipient"/>
+      <view wx:for="{{friendname}}">
+        <van-cell data-friend="{{userid[index]}}" bindtap="changeRecipient">
+          <view slot="title">
+            <view class="van-cell-text">{{friendname[index]}}</view>
+            <van-tag type="primary" class="relationship" style="margin-left: {{frelationshipLength[index]}};" >{{relationship[index]}}</van-tag>
+          </view>
+        </van-cell>
+      </view>
     </van-cell-group>
   </view>
 </van-popup>

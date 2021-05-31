@@ -10,6 +10,7 @@ Page({
     signature: '',
     protrait: '',
     id: '',
+    credit: '',
     wallet: 0,
     active: 2,
   },
@@ -40,13 +41,15 @@ Page({
         id:app.globalData.id
       }
     }).then(function(e){
+      console.log(e)
       that.setData({
         nickname: e.result.baseInformation.nickname,
         sex: e.result.baseInformation.sex,
         signature: e.result.baseInformation.signature,
         protrait: e.result.baseInformation.protrait,
         wallet: e.result.wallet,
-        id: app.globalData.id
+        id: app.globalData.id,
+        credit: e.result.credit
       })
     })
   },

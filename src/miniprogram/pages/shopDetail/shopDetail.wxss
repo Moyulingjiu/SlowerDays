@@ -17,7 +17,7 @@
 
 .tag{
   position: relative;
-  left: 92px;
+  left: 100px;
   top: 34px;
   margin: 20px;
 }

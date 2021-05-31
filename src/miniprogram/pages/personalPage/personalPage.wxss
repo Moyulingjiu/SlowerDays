@@ -69,6 +69,13 @@ page{
   margin: 5px;
 }
 
+.tags2{
+  position: relative;
+  left: 220px;
+  top: 46px;
+  margin: 5px;
+}
+
 .signaturecard{
   position: relative;
   top: 80px;
